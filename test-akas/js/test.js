@@ -85,7 +85,7 @@ let mGameRenderer = (data = {}, mDOM) => {
 
                                         mArtBox_evnt.add_svg({
                                             "w": `30vw`,
-                                            "h": `60vh`,
+                                            "h": `30vw`,
                                             "x": 35,
                                             "y": 25,
                                             "e": mE,
@@ -95,11 +95,12 @@ let mGameRenderer = (data = {}, mDOM) => {
                                                 setTimeout(() => {
                                                     anime({
                                                         targets: v.e,
-                                                        rotate: 150,
+                                                        rotate: 180,
+                                                        loop: true,
                                                         // scale: 2.5,
                                                         easing: 'linear'
                                                     })
-                                                }, 1000);
+                                                }, 100);
 
                                                 // setTimeout(() => {
                                                 //     let logoDiv = document.createElement('div');
@@ -152,7 +153,6 @@ let mGameRenderer = (data = {}, mDOM) => {
                                                             v.e.style.cursor = 'pointer';
                                                         },
                                                         "onClick": (v = {}) => {
-                                                            v.e.style.transform = 'scale(scr_1)';
                                                             on_scr_end();
                                                         }
                                                     });
@@ -171,7 +171,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                         }
                     },
 
-                    // screen - 2---------------------
+                    //Screen 2 -------------------
                     {
                         "name": "Screen 2",
                         "key": "scr_2",
@@ -193,6 +193,13 @@ let mGameRenderer = (data = {}, mDOM) => {
 
                             let mSet = (mE = document.body) => {
 
+                                // Splash 1 - Rotate:--
+                                mArtBox_evnt.add_svg({
+                                    "w": `100vw`,
+                                    "h": `100vh`,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/audio2.svg`
+                                });
 
                                 let on_scr_end = () => {
                                     mSendCB(`on_scr_end`, {});
@@ -203,39 +210,41 @@ let mGameRenderer = (data = {}, mDOM) => {
                         }
                     },
 
+                   
+
                     // Screen - 3 -----------------------------
-                    {
-                        "name": "Screen 3",
-                        "key": "scr_3",
-                        "set": (k, v, thisItem) => {
-                            console.log(thisItem);
-                            //--reset--// [START]
-                            v["e"].innerHTML = ``; //reset
+                    // {
+                    //     "name": "Screen 3",
+                    //     "key": "scr_3",
+                    //     "set": (k, v, thisItem) => {
+                    //         console.log(thisItem);
+                    //         //--reset--// [START]
+                    //         v["e"].innerHTML = ``; //reset
 
-                            //mSendCB..
-                            let mSendCB = (cb_name, p = {}) => {
-                                if (v["value"].hasOwnProperty("cb")) {
-                                    if (v["value"]["cb"].hasOwnProperty(cb_name)) {
-                                        v["value"]["cb"][cb_name](p);
-                                    }
-                                }
-                            };
+                    //         //mSendCB..
+                    //         let mSendCB = (cb_name, p = {}) => {
+                    //             if (v["value"].hasOwnProperty("cb")) {
+                    //                 if (v["value"]["cb"].hasOwnProperty(cb_name)) {
+                    //                     v["value"]["cb"][cb_name](p);
+                    //                 }
+                    //             }
+                    //         };
 
-                            //set..
-                            let mScr = document.createElement("div");
-                            v["e"].appendChild(mScr);
-                            mScr.style.height = `100vh`;
-                            mScr.style.width = `100%`;
-                            mScr.style.position = "relative";
+                    //         //set..
+                    //         let mScr = document.createElement("div");
+                    //         v["e"].appendChild(mScr);
+                    //         mScr.style.height = `100vh`;
+                    //         mScr.style.width = `100%`;
+                    //         mScr.style.position = "relative";
 
-                            let mSet = (mE = document.body) => {
+                    //         let mSet = (mE = document.body) => {
 
 
-                            }
+                    //         }
 
-                            mSet(mScr);
-                        }
-                    },
+                    //         mSet(mScr);
+                    //     }
+                    // },
 
                     // Screen 4 ---------------------
                     {
