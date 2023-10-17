@@ -71,69 +71,62 @@ let mGameRenderer = (data = {}, mDOM) => {
                                     "w": `100vw`,
                                     "h": `100vh`,
                                     "e": mE,
-                                    "src": `${m_asset_path}/splash_1.svg`
+                                    "src": `${m_asset_path}/Loading-Screen-bg.svg`
                                 }, {
                                     "onLoad": (v = {}) => {
                                         setTimeout(() => {
                                             anime({
                                                 targets: v.e,
-                                                rotate: 65,
-                                                scale: 2.5,
+                                                rotate: 100,
+                                                scale: 5,
                                                 easing: 'linear'
                                             })
                                         }, 100);
 
                                         mArtBox_evnt.add_svg({
-                                            "w": `100vw`,
-                                            "h": `100vh`,
-                                            "x": 0,
-                                            "y": 0,
+                                            "w": `30vw`,
+                                            "h": `60vh`,
+                                            "x": 35,
+                                            "y": 25,
                                             "e": mE,
-                                            "src": `${m_asset_path}/splash_2.svg`
+                                            "src": `${m_asset_path}/loader.svg`
                                         }, {
                                             "onLoad": (v = {}) => {
-                                                v.e.style.opacity = "0";
-                                                v.e.style.transform = "rotate(-25deg)";
                                                 setTimeout(() => {
                                                     anime({
                                                         targets: v.e,
-                                                        opacity: 1,
-                                                        scale: 2,
-                                                        scaleY: [
-                                                            { value: 0, duration: 0 },
-                                                            { value: 1, duration: 1000, easing: 'easeInOutQuad' }
-                                                        ],
-                                                        duration: 2000,
-                                                        delay: 1000,
-                                                    });
+                                                        rotate: 150,
+                                                        // scale: 2.5,
+                                                        easing: 'linear'
+                                                    })
                                                 }, 1000);
 
-                                                setTimeout(() => {
-                                                    let logoDiv = document.createElement('div');
-                                                    logoDiv.style.width = '15vh';
-                                                    logoDiv.style.height = '15vh';
-                                                    logoDiv.style.backgroundColor = 'white';
-                                                    logoDiv.style.borderRadius = '50px';
-                                                    logoDiv.style.position = 'absolute';
-                                                    logoDiv.style.top = '43%';
-                                                    logoDiv.style.left = '46%';
-                                                    logoDiv.style.zIndex = '10';
-                                                    logoDiv.style.transform = "rotate(25deg)";
+                                                // setTimeout(() => {
+                                                //     let logoDiv = document.createElement('div');
+                                                //     logoDiv.style.width = '15vh';
+                                                //     logoDiv.style.height = '15vh';
+                                                //     logoDiv.style.backgroundColor = 'white';
+                                                //     logoDiv.style.borderRadius = '50px';
+                                                //     logoDiv.style.position = 'absolute';
+                                                //     logoDiv.style.top = '43%';
+                                                //     logoDiv.style.left = '46%';
+                                                //     logoDiv.style.zIndex = '10';
+                                                //     logoDiv.style.transform = "rotate(25deg)";
 
-                                                    let logoText = document.createElement('h1');
-                                                    logoText.innerText = "Logo"
-                                                    logoText.style.color = '#000';
-                                                    logoText.style.fontSize = '3vh';
-                                                    logoText.style.fontWeight = '600';
-                                                    logoText.style.position = 'absolute';
-                                                    logoText.style.top = '40%';
-                                                    logoText.style.left = '30%';
-                                                    logoText.style.zIndex = '100';
+                                                //     let logoText = document.createElement('h1');
+                                                //     logoText.innerText = "Logo"
+                                                //     logoText.style.color = '#000';
+                                                //     logoText.style.fontSize = '3vh';
+                                                //     logoText.style.fontWeight = '600';
+                                                //     logoText.style.position = 'absolute';
+                                                //     logoText.style.top = '40%';
+                                                //     logoText.style.left = '30%';
+                                                //     logoText.style.zIndex = '100';
                                                     
-                                                    logoDiv.appendChild(logoText);
-                                                    let value = v.e;
-                                                    value.appendChild(logoDiv);
-                                                }, 3000);
+                                                //     logoDiv.appendChild(logoText);
+                                                //     let value = v.e;
+                                                //     value.appendChild(logoDiv);
+                                                // }, 3000);
                                             }
                                         });
 
@@ -144,22 +137,22 @@ let mGameRenderer = (data = {}, mDOM) => {
                                                 "x": 0,
                                                 "y": 0,
                                                 "e": mE,
-                                                "src": `${m_asset_path}/dashboard.svg`
+                                                "src": `${m_asset_path}/audio1.svg`
                                             }, {
                                                 "onLoad": (v = {}) => {
                                                     mArtBox_evnt.add_svg({
-                                                        "w": `7vw`,
-                                                        "h": `5vh`,
-                                                        "x": 88,
-                                                        "y": 87,
+                                                        "w": `4vw`,
+                                                        "h": `3vh`,
+                                                        "x": 48,
+                                                        "y": 64,
                                                         "e": mE,
-                                                        "src": `${m_asset_path}/next_btn.svg`
+                                                        "src": `${m_asset_path}/Play & Pause.svg`
                                                     }, {
                                                         "onLoad": (v = {}) => {
                                                             v.e.style.cursor = 'pointer';
                                                         },
                                                         "onClick": (v = {}) => {
-                                                            v.e.style.transform = 'scale(0.9)';
+                                                            v.e.style.transform = 'scale(scr_1)';
                                                             on_scr_end();
                                                         }
                                                     });
