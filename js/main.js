@@ -835,7 +835,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                                     "e": mE,
                                     "src": `${m_asset_path}/bg_lightblue_designed_1.svg`
                                 }, {
-                                    "onLoad": (v = {}) => {}
+                                    "onLoad": (v = {}) => { }
                                 });
 
                                 // BG white:--
@@ -857,7 +857,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                                             "x": 12,
                                             "y": 16,
                                             "e": mE,
-                                            "src": `${m_asset_path}/countdown_length1.svg`
+                                            "src": `${m_asset_path}/countdown_length.svg`
                                         }, {
                                             "onLoad": (v = {}) => {
                                                 v.e.style.zIndex = '100';
@@ -866,15 +866,18 @@ let mGameRenderer = (data = {}, mDOM) => {
                                                     v.e.style.opacity = 1;
                                                     anime({
                                                         targets: v.e,
-                                                        width: ['0%', '50%'],
-                                                        width: ['50%', '100%'],
-                                                        duration: 5000,
+                                                        width: ['0%', '100%'],
+                                                        duration: 6000,
                                                         easing: 'easeInOutQuad'
                                                     });
+
+                                                    setTimeout(() => {
+                                                        on_scr_end();
+                                                    }, 6100);
                                                 }, 500);
                                             }
                                         });
-                                        
+
                                         // Rose and headline:--
                                         mArtBox_evnt.add_svg({
                                             "w": `68vw`,
@@ -997,367 +1000,201 @@ let mGameRenderer = (data = {}, mDOM) => {
 
                             //set..
                             let mSet = (mE = document.body) => {
-                                // BG:--
+                                // BG & Next Btn:--
+                                mArtBox_evnt.add_svg({
+                                    "w": `100vw`,
+                                    "h": `100vh`,
+                                    "x": 0,
+                                    "y": 0,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/bg_blue_white.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {
+                                        mArtBox_evnt.add_svg({ // Next btn
+                                            "w": `7vw`,
+                                            "h": `5vh`,
+                                            "x": 80,
+                                            "y": 82,
+                                            "e": mE,
+                                            "src": `${m_asset_path}/next_btn.svg`
+                                        }, {
+                                            "onLoad": (v = {}) => {
+                                                v.e.style.cursor = 'pointer';
+                                            },
+                                            "onClick": (v = {}) => {
+                                                on_scr_end();
+                                            }
+                                        });
+                                    }
+                                });//--------
 
+                                // Replied text about rose:--
+                                mArtBox_evnt.add_svg({
+                                    "w": `66vw`,
+                                    "h": `30vh`,
+                                    "x": 17,
+                                    "y": 20,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/replied_text_about_rose.svg`
+                                });
+
+                                // Missing Words:--
+                                mArtBox_evnt.add_svg({//Missing words - text
+                                    "w": `15vw`,
+                                    "h": `4vh`,
+                                    "x": 17,
+                                    "y": 60,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/missing_words_text.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {
+                                        v.e.style.cursor = 'pointer';
+                                    },
+                                    "onClick": (v = {}) => {
+                                        on_scr_end();
+                                    }
+                                });
+
+                                mArtBox_evnt.add_svg({//first class red
+                                    "w": `20vw`,
+                                    "h": `8vh`,
+                                    "x": 20,
+                                    "y": 70,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/first_class_red.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {
+                                        v.e.style.cursor = 'pointer';
+                                    },
+                                    "onClick": (v = {}) => {
+                                        mArtBox_evnt.add_svg({//toolkit - first class
+                                            "w": `12vw`,
+                                            "h": `8vh`,
+                                            "x": 25,
+                                            "y": 76,
+                                            "e": mE,
+                                            "src": `${m_asset_path}/toolkit_first_class.svg`
+                                        });
+                                    }
+                                });
+
+                                mArtBox_evnt.add_svg({//shabby red
+                                    "w": `20vw`,
+                                    "h": `8vh`,
+                                    "x": 50,
+                                    "y": 70,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/shabby_red.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {
+                                        v.e.style.cursor = 'pointer';
+                                    },
+                                    "onClick": (v = {}) => {
+                                        mArtBox_evnt.add_svg({// toolkit - shabby red
+                                            "w": `12vw`,
+                                            "h": `8vh`,
+                                            "x": 55,
+                                            "y": 76,
+                                            "e": mE,
+                                            "src": `${m_asset_path}/toolkit_shabby.svg`
+                                        });
+                                    }
+                                });
 
                                 //------------|
 
+                                // on_scr_end..
+                                let on_scr_end = () => {
+                                    //send cb..
+                                    mSendCB(`on_scr_end`, {});
+                                };
                             };
 
                             mSet(mScr);
                         }
                     },
 
-                    // // Screen-5_1 -----------------------------
-                    // {
-                    //     "name": "Screen 5_1",
-                    //     "key": "scr_5_1",
-                    //     "set": (k, v, thisItem) => {
-                    //         console.log(thisItem);
-                    //         v["e"].innerHTML = ``; //reset the screen
+                    // Screen-6 -----------------------------
+                    {
+                        "name": "Screen 6",
+                        "key": "scr_6",
+                        "set": (k, v, thisItem) => {
+                            console.log(thisItem);
+                            v["e"].innerHTML = ``; //reset the screen
 
-                    //         //mSendCB..
-                    //         let mSendCB = (cb_name, p = {}) => {
-                    //             if (v["value"].hasOwnProperty("cb")) {
-                    //                 if (v["value"]["cb"].hasOwnProperty(cb_name)) {
-                    //                     v["value"]["cb"][cb_name](p);
-                    //                 }
-                    //             }
-                    //         };
-
-
-                    //         //set..
-                    //         let mScr = document.createElement("div");
-                    //         v["e"].appendChild(mScr);
-                    //         mScr.style.height = `100vh`;
-                    //         mScr.style.width = `100%`;
-                    //         mScr.style.overflow = `hidden`;
+                            //mSendCB..
+                            let mSendCB = (cb_name, p = {}) => {
+                                if (v["value"].hasOwnProperty("cb")) {
+                                    if (v["value"]["cb"].hasOwnProperty(cb_name)) {
+                                        v["value"]["cb"][cb_name](p);
+                                    }
+                                }
+                            };
 
 
-                    //         //set..
-                    //         let mSet = (mE = document.body) => {
-                    //             // BG:--
-                    //             mArtBox_evnt.add_svg({
-                    //                 "w": `100vw`,
-                    //                 "h": `100vh`,
-                    //                 "e": mE,
-                    //                 "src": `${m_asset_path}/bg.svg`
-                    //             }, {
-                    //                 "onLoad": (v = {}) => {
-                    //                     mArtBox_evnt.add_svg({
-                    //                         "w": `5.3vw`,
-                    //                         "h": `6vh`,
-                    //                         "x": 4,
-                    //                         "y": 76,
-                    //                         "e": mE,
-                    //                         "src": `${m_asset_path}/little_square.svg`
-                    //                     }, {
-                    //                         "onLoad": (v = {}) => {
-
-                    //                         }
-                    //                     });
-                    //                 }
-                    //             });
-                    //             //------
-
-                    //             // Garland of positive and negative(except one negative sign):--
-                    //             mArtBox_evnt.add_svg({
-                    //                 "w": `100vw`,
-                    //                 "h": `100vh`,
-                    //                 "x": 0,
-                    //                 "y": 0,
-                    //                 "e": mE,
-                    //                 "src": `${m_asset_path}/garland_2_neg_less.svg`
-                    //             }, {
-                    //                 "onLoad": (v = {}) => {
-                    //                     mArtBox_evnt.add_svg({ //one neg sign:- to move top left
-                    //                         "w": `5vw`,
-                    //                         "h": `2vh`,
-                    //                         "x": 12,
-                    //                         "y": 44,
-                    //                         "e": mE,
-                    //                         "src": `${m_asset_path}/neg_sign.svg`
-                    //                     }, {
-                    //                         "onLoad": (v = {}) => {
-                    //                             anime({
-                    //                                 targets: v.e,
-                    //                                 translateX: -80,
-                    //                                 translateY: -120,
-                    //                                 duration: 50,
-                    //                                 easing: 'spring(1, 80, 10, 0)'
-                    //                             });
-                    //                             setTimeout(() => {
-                    //                                 anime({
-                    //                                     targets: v.e,
-                    //                                     translateX: [-80, 0],
-                    //                                     translateY: [-120, 0],
-                    //                                     duration: 50,
-                    //                                     delay: 0,
-                    //                                     easing: 'spring(1, 80, 10, 0)'
-                    //                                 });
-                    //                             }, 300);
-
-                    //                         }
-                    //                     });//------
-
-                    //                     mArtBox_evnt.add_svg({ //one neg sign:- to move bottom
-                    //                         "w": `5vw`,
-                    //                         "h": `2vh`,
-                    //                         "x": 20,
-                    //                         "y": 81.5,
-                    //                         "e": mE,
-                    //                         "src": `${m_asset_path}/neg_sign.svg`
-                    //                     }, {
-                    //                         "onLoad": (v = {}) => {
-                    //                             anime({
-                    //                                 targets: v.e,
-                    //                                 translateX: -80,
-                    //                                 translateY: 120,
-                    //                                 duration: 80,
-                    //                                 delay: 0,
-                    //                                 easing: 'spring(1, 80, 6, 1)'
-                    //                             });
-                    //                             setTimeout(() => {
-                    //                                 anime({
-                    //                                     targets: v.e,
-                    //                                     translateX: [-80, 0],
-                    //                                     translateY: [120, 0],
-                    //                                     duration: 80,
-                    //                                     delay: 0,
-                    //                                     easing: 'spring(1, 80, 6, 1)'
-                    //                                 });
-                    //                             }, 300);
-
-                    //                         }
-                    //                     });//--------
-                    //                 }
-                    //             });
-
-                    //             // Congrats Plate:--
-                    //             mArtBox_evnt.add_svg({
-                    //                 "w": `72vw`,
-                    //                 "h": `100vh`,
-                    //                 "x": 16,
-                    //                 "y": 0,
-                    //                 "e": mE,
-                    //                 "src": `${m_asset_path}/particles.svg`
-                    //             }, {
-                    //                 "onLoad": (v = {}) => {
-                    //                     // v.e.style.zIndex = "100";
-                    //                     mArtBox_evnt.add_animation({
-                    //                         "e": v.e,
-                    //                         "type": "animate__heartBeat"
-                    //                     });
-                    //                     mArtBox_evnt.add_svg({
-                    //                         "w": `40vw`,
-                    //                         "h": `40vh`,
-                    //                         "x": 30,
-                    //                         "y": 30,
-                    //                         "e": mE,
-                    //                         "src": `${m_asset_path}/result_bg_plate.svg`
-                    //                     }, {
-                    //                         "onLoad": (v = {}) => {
-                    //                             mArtBox_evnt.add_animation({
-                    //                                 "e": v.e,
-                    //                                 "type": "animate__heartBeat"
-                    //                             });
-                    //                             mArtBox_evnt.add_svg({
-                    //                                 "w": `30vw`,
-                    //                                 "h": `30vh`,
-                    //                                 "x": 36,
-                    //                                 "y": 35,
-                    //                                 "e": mE,
-                    //                                 "src": `${m_asset_path}/congrats_text.svg`
-                    //                             }, {
-                    //                                 "onLoad": (v = {}) => {
-
-                    //                                 }
-                    //                             });
-                    //                         }
-                    //                     });
+                            //set..
+                            let mScr = document.createElement("div");
+                            v["e"].appendChild(mScr);
+                            mScr.style.height = `100vh`;
+                            mScr.style.width = `100%`;
+                            mScr.style.overflow = `hidden`;
 
 
-                    //                 }
-                    //             });
+                            //set..
+                            let mSet = (mE = document.body) => {
+                                
+
+                                // on_scr_end..
+                                let on_scr_end = () => {
+                                    //send cb..
+                                    mSendCB(`on_scr_end`, {});
+                                };
+                            };
+                            mSet(mScr);
+                        }
+                    },
+
+                    // Screen-7 -----------------------------
+                    {
+                        "name": "Screen 7",
+                        "key": "scr_7",
+                        "set": (k, v, thisItem) => {
+                            console.log(thisItem);
+                            v["e"].innerHTML = ``; //reset the screen
+
+                            //mSendCB..
+                            let mSendCB = (cb_name, p = {}) => {
+                                if (v["value"].hasOwnProperty("cb")) {
+                                    if (v["value"]["cb"].hasOwnProperty(cb_name)) {
+                                        v["value"]["cb"][cb_name](p);
+                                    }
+                                }
+                            };
 
 
-                    //             // on_scr_end..
-                    //             let on_scr_end = () => {
-                    //                 //send cb..
-                    //                 mSendCB(`on_scr_end`, {});
-                    //             };
-                    //         };
-                    //         mSet(mScr);
-                    //     }
-                    // },
-
-                    // // Screen-5_2 -----------------------------
-                    // {
-                    //     "name": "Screen 5_2",
-                    //     "key": "scr_5_2",
-                    //     "set": (k, v, thisItem) => {
-                    //         console.log(thisItem);
-                    //         v["e"].innerHTML = ``; //reset the screen
-
-                    //         //mSendCB..
-                    //         let mSendCB = (cb_name, p = {}) => {
-                    //             if (v["value"].hasOwnProperty("cb")) {
-                    //                 if (v["value"]["cb"].hasOwnProperty(cb_name)) {
-                    //                     v["value"]["cb"][cb_name](p);
-                    //                 }
-                    //             }
-                    //         };
+                            //set..
+                            let mScr = document.createElement("div");
+                            v["e"].appendChild(mScr);
+                            mScr.style.height = `100vh`;
+                            mScr.style.width = `100%`;
+                            mScr.style.overflow = `hidden`;
 
 
-                    //         //set..
-                    //         let mScr = document.createElement("div");
-                    //         v["e"].appendChild(mScr);
-                    //         mScr.style.height = `100vh`;
-                    //         mScr.style.width = `100%`;
-                    //         mScr.style.overflow = `hidden`;
+                            //set..
+                            let mSet = (mE = document.body) => {
+                                // BG:--
 
 
-                    //         //set..
-                    //         let mSet = (mE = document.body) => {
+                                // on_scr_end..
+                                let on_scr_end = () => {
+                                    //send cb..
+                                    mSendCB(`on_scr_end`, {});
+                                };
 
-
-                    //             // BG:--
-                    //             mArtBox_evnt.add_svg({
-                    //                 "w": `100vw`,
-                    //                 "h": `100vh`,
-                    //                 "e": mE,
-                    //                 "src": `${m_asset_path}/bg.svg`
-                    //             }, {
-                    //                 "onLoad": (v = {}) => {
-                    //                     mArtBox_evnt.add_svg({
-                    //                         "w": `5.3vw`,
-                    //                         "h": `6vh`,
-                    //                         "x": 4,
-                    //                         "y": 76,
-                    //                         "e": mE,
-                    //                         "src": `${m_asset_path}/little_square.svg`
-                    //                     }, {
-                    //                         "onLoad": (v = {}) => {
-
-                    //                         }
-                    //                     });
-                    //                 }
-                    //             });
-                    //             //------
-
-                    //             // Garland of positive and negative(except two negative sign):--
-                    //             mArtBox_evnt.add_svg({
-                    //                 "w": `100vw`,
-                    //                 "h": `100vh`,
-                    //                 "x": 0,
-                    //                 "y": 0,
-                    //                 "e": mE,
-                    //                 "src": `${m_asset_path}/garland_2_neg_less.svg`
-                    //             }, {
-                    //                 "onLoad": (v = {}) => {
-                    //                     mArtBox_evnt.add_svg({ //one neg sign:- to move top left
-                    //                         "w": `5vw`,
-                    //                         "h": `2vh`,
-                    //                         "x": 12,
-                    //                         "y": 44,
-                    //                         "e": mE,
-                    //                         "src": `${m_asset_path}/neg_sign.svg`
-                    //                     }, {
-                    //                         "onLoad": (v = {}) => {
-                    //                             anime({
-                    //                                 targets: v.e,
-                    //                                 translateX: -80,
-                    //                                 translateY: -120,
-                    //                                 duration: 50,
-                    //                                 easing: 'spring(1, 80, 10, 0)'
-                    //                             });
-                    //                             setTimeout(() => {
-                    //                                 anime({
-                    //                                     targets: v.e,
-                    //                                     translateX: [-80, 0],
-                    //                                     translateY: [-120, 0],
-                    //                                     duration: 50,
-                    //                                     delay: 0,
-                    //                                     easing: 'spring(1, 80, 10, 0)'
-                    //                                 });
-                    //                             }, 300);
-
-                    //                         }
-                    //                     });//------
-
-                    //                     mArtBox_evnt.add_svg({ //one neg sign:- to move bottom
-                    //                         "w": `5vw`,
-                    //                         "h": `2vh`,
-                    //                         "x": 20,
-                    //                         "y": 81.5,
-                    //                         "e": mE,
-                    //                         "src": `${m_asset_path}/neg_sign.svg`
-                    //                     }, {
-                    //                         "onLoad": (v = {}) => {
-                    //                             anime({
-                    //                                 targets: v.e,
-                    //                                 translateX: -80,
-                    //                                 translateY: 120,
-                    //                                 duration: 80,
-                    //                                 delay: 0,
-                    //                                 easing: 'spring(1, 80, 6, 1)'
-                    //                             });
-                    //                             setTimeout(() => {
-                    //                                 anime({
-                    //                                     targets: v.e,
-                    //                                     translateX: [-80, 0],
-                    //                                     translateY: [120, 0],
-                    //                                     duration: 80,
-                    //                                     delay: 0,
-                    //                                     easing: 'spring(1, 80, 6, 1)'
-                    //                                 });
-                    //                             }, 300);
-
-                    //                         }
-                    //                     });//--------
-                    //                 }
-                    //             });
-
-                    //             // Try Again Plate:--
-                    //             mArtBox_evnt.add_svg({
-                    //                 "w": `40vw`,
-                    //                 "h": `40vh`,
-                    //                 "x": 30,
-                    //                 "y": 30,
-                    //                 "e": mE,
-                    //                 "src": `${m_asset_path}/result_bg_plate.svg`
-                    //             }, {
-                    //                 "onLoad": (v = {}) => {
-                    //                     mArtBox_evnt.add_animation({
-                    //                         "e": v.e,
-                    //                         "type": "animate__heartBeat"
-                    //                     });
-                    //                     mArtBox_evnt.add_svg({
-                    //                         "w": `30vw`,
-                    //                         "h": `30vh`,
-                    //                         "x": 36,
-                    //                         "y": 35.5,
-                    //                         "e": mE,
-                    //                         "src": `${m_asset_path}/try_again_text.svg`
-                    //                     }, {
-                    //                         "onLoad": (v = {}) => {
-
-                    //                         }
-                    //                     });
-                    //                 }
-                    //             });
-
-
-                    //             // on_scr_end..
-                    //             let on_scr_end = () => {
-                    //                 //send cb..
-                    //                 mSendCB(`on_scr_end`, {});
-                    //             };
-
-                    //         };
-                    //         mSet(mScr);
-                    //     }
-                    // },
+                            };
+                            mSet(mScr);
+                        }
+                    },
 
                 ]
             },
@@ -1385,6 +1222,37 @@ let mGameRenderer = (data = {}, mDOM) => {
 
     // //mStart..
     let mStart = (mE) => {
+
+        let scr_7 = () => {
+            mDta_main.screens.set(`scr_7`, {
+                "e": mE,
+                "value": {
+                    //here you can assign your variable based on your requirements..
+                    //callback..
+                    "cb": {
+                        "on_scr_end": (p = {}) => {
+
+                        },
+                    }
+                }
+            });
+        };
+
+        let scr_6 = () => {
+            mDta_main.screens.set(`scr_6`, {
+                "e": mE,
+                "value": {
+                    //here you can assign your variable based on your requirements..
+                    //callback..
+                    "cb": {
+                        "on_scr_end": (p = {}) => {
+                            scr_7();
+                        },
+                    }
+                }
+            });
+        };
+
         let scr_5 = () => {
             mDta_main.screens.set(`scr_5`, {
                 "e": mE,
@@ -1393,7 +1261,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                     //callback..
                     "cb": {
                         "on_scr_end": (p = {}) => {
-
+                            scr_6();
                         },
                     }
                 }
@@ -1415,20 +1283,20 @@ let mGameRenderer = (data = {}, mDOM) => {
             });
         };
 
-        // let scr_3 = () => {
-        //     mDta_main.screens.set(`scr_3`, {
-        //         "e": mE,
-        //         "value": {
-        //             //here you can assign your variable based on your requirements..
-        //             //callback..
-        //             "cb": {
-        //                 "on_scr_end": (p = {}) => {
-        //                     scr_4();
-        //                 },
-        //             }
-        //         }
-        //     });
-        // };
+        let scr_3 = () => {
+            mDta_main.screens.set(`scr_3`, {
+                "e": mE,
+                "value": {
+                    //here you can assign your variable based on your requirements..
+                    //callback..
+                    "cb": {
+                        "on_scr_end": (p = {}) => {
+                            scr_4();
+                        },
+                    }
+                }
+            });
+        };
 
         let scr_2_2 = () => {
             mDta_main.screens.set(`scr_2_2`, {
@@ -1494,7 +1362,7 @@ let mGameRenderer = (data = {}, mDOM) => {
             });
         };
 
-        mDta_main.screens.set(`scr_4`, {
+        mDta_main.screens.set(`scr_5`, {
             "e": mE, //Html-Element
             "value": {
                 //here you can assign your variable based on your requirements..
@@ -1502,7 +1370,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                 //callback..
                 "cb": {
                     "on_scr_end": (p = {}) => {
-                        // scr_4();
+                        scr_6();
                     },
                 }
 
