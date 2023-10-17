@@ -356,6 +356,77 @@ let mGameRenderer = (data = {}, mDOM) => {
                         }
                     },
 
+                    // Screen-5 -----------------------------
+                    {
+                        "name": "Screen 3",
+                        "key": "scr_3",
+                        "set": (k, v, thisItem) => {
+                            console.log(thisItem);
+                            v["e"].innerHTML = ``; //reset the screen
+
+                            let mSendCB = (cb_name, p = {}) => {
+                                if (v["value"].hasOwnProperty("cb") && v["value"]["cb"].hasOwnProperty(cb_name)) {
+                                    v["value"]["cb"][cb_name](p);
+                                }
+                            };
+
+                            let mScr = document.createElement("div");
+                            v["e"].appendChild(mScr);
+                            mScr.style.height = `100vh`;
+                            mScr.style.width = `100%`;
+                            mScr.style.overflow = `hidden`;
+
+                            let mSet = (mE = document.body) => {
+
+                                // Splash 1 - Rotate:--
+                                mArtBox_evnt.add_svg({
+                                    "w": `100vw`,
+                                    "h": `100vh`,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/Dashboard 5.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {
+                                        setTimeout(() => {
+                                            mArtBox_evnt.add_svg({
+                                                "w": `100vw`,
+                                                "h": `100vh`,
+                                                "x": 0,
+                                                "y": 0,
+                                                "e": mE,
+                                                "src": `${m_asset_path}/Dashboard 5.svg`
+                                            }, {
+                                                "onLoad": (v = {}) => {
+                                                    mArtBox_evnt.add_svg({
+                                                        "w": `7vw`,
+                                                        "h": `5vh`,
+                                                        "x": 88,
+                                                        "y": 86,
+                                                        "e": mE,
+                                                        "src": `${m_asset_path}/next_btn.svg`
+                                                    }, {
+                                                        "onLoad": (v = {}) => {
+                                                            v.e.style.cursor = 'pointer';
+                                                        },
+                                                        "onClick": (v = {}) => {
+                                                            on_scr_end();
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                        }, 100);
+                                    }
+                                });
+
+                                let on_scr_end = () => {
+                                    mSendCB(`on_scr_end`, {});
+                                };
+                            };
+
+                            mSet(mScr);
+                        }
+                    },
+
+
 
                     // // Screen-5 -----------------------------
                     // {
