@@ -313,14 +313,39 @@ let mGameRenderer = (data = {}, mDOM) => {
                                     "w": `100vw`,
                                     "h": `100vh`,
                                     "e": mE,
-                                    "src": `${m_asset_path}/audio2.svg`
+                                    "src": `${m_asset_path}/audio5.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {
+                                        setTimeout(() => {
+                                            mArtBox_evnt.add_svg({
+                                                "w": `100vw`,
+                                                "h": `100vh`,
+                                                "x": 0,
+                                                "y": 0,
+                                                "e": mE,
+                                                "src": `${m_asset_path}/audio5.svg`
+                                            }, {
+                                                "onLoad": (v = {}) => {
+                                                    mArtBox_evnt.add_svg({
+                                                        "w": `7vw`,
+                                                        "h": `5vh`,
+                                                        "x": 78,
+                                                        "y": 84,
+                                                        "e": mE,
+                                                        "src": `${m_asset_path}/next_btn.svg`
+                                                    }, {
+                                                        "onLoad": (v = {}) => {
+                                                            v.e.style.cursor = 'pointer';
+                                                        },
+                                                        "onClick": (v = {}) => {
+                                                            on_scr_end();
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                        }, 100);
+                                    }
                                 });
-                                setTimeout(() => {
-                                        mArtBox_evnt.add_svg({
-                                         on_scr_end
-                                        }
-                                    );
-                                }, 3500);
 
                                 let on_scr_end = () => {
                                     mSendCB(`on_scr_end`, {});
