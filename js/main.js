@@ -641,8 +641,8 @@ let mGameRenderer = (data = {}, mDOM) => {
                                 mArtBox_evnt.add_svg({ //1
                                     "w": `100vw`,
                                     "h": `100vh`,
-                                    "x": 0,
-                                    "y": 0,
+                                    // "x": 0,
+                                    // "y": 0,
                                     "e": mE,
                                     "src": `${m_asset_path}/bg_lightblue_designed_1.svg`
                                 }, {
@@ -660,6 +660,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                                                 "onLoad": (v = {}) => {
                                                     setTimeout(() => {
                                                         v.e.style.opacity = "0";
+                                                        v.e.style.transition = "transform 1s ease";
                                                         mArtBox_evnt.add_svg({ //3
                                                             "w": `100vw`,
                                                             "h": `100vh`,
@@ -679,22 +680,106 @@ let mGameRenderer = (data = {}, mDOM) => {
                                     }
                                 });//--------
 
-                                // mArtBox_evnt.add_svg({ //2
-                                //     "w": `100vw`,
-                                //     "h": `100vh`,
-                                //     "x": 0,
-                                //     "y": 0,
-                                //     "e": mE,
-                                //     "src": `${m_asset_path}/next_btn.svg`
-                                // }, {
-                                //     "onLoad": (v = {}) => {
-                                //         v.e.style.cursor = 'pointer';
-                                //     },
-                                //     "onClick": (v = {}) => {
-                                //         mSendCB(`on_scr_end`, {});
-                                //     }
-                                // });
+                                // Bg white:--
+                                mArtBox_evnt.add_svg({
+                                    "w": `80vw`,
+                                    "h": `80vh`,
+                                    "x": 10,
+                                    "y": 10,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/bg_white.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {
+                                        v.e.style.zIndex = '100';
 
+                                        // Speaking about rose page1 data:--
+                                        mArtBox_evnt.add_svg({
+                                            "w": `70vw`,
+                                            "h": `70vh`,
+                                            "x": 15,
+                                            "y": 15,
+                                            "e": mE,
+                                            "src": `${m_asset_path}/speaking_about_rose_page1.svg`
+                                        }, {
+                                            "onLoad": (v = {}) => {
+                                                v.e.style.zIndex = '100';
+
+                                                // Speak now transparent circle:--
+                                                mArtBox_evnt.add_svg({
+                                                    "w": `5vw`,
+                                                    "h": `5vh`,
+                                                    "x": 27,
+                                                    "y": 37,
+                                                    "e": mE,
+                                                    "src": `${m_asset_path}/speak_in_text.svg`
+                                                }, {
+                                                    "onLoad": (v = {}) => {
+                                                        v.e.style.zIndex = '100';
+                                                        v.e.style.border = '1px solid';
+                                                        v.e.style.borderRadius = '50%';
+                                                        v.e.style.width = "13vw";
+                                                        v.e.style.height = "13vw";
+
+                                                        let svg = v.e.querySelector('svg');
+                                                        svg.style.position = "absolute";
+                                                        svg.style.top = "40%";
+                                                        svg.style.left = "28%";
+                                                    }
+                                                });
+                                            }
+                                        });
+
+                                        setTimeout(() => {
+                                            mArtBox_evnt.add_animation({
+                                                "e": v.e,
+                                                "type":"animate__zoomOut"
+                                            });
+                                            v.e.style.animationDuration = "2s;"
+                                        }, 2500);
+                                    }
+                                });//-------
+
+                                // Bg white & Speak now Btn:--
+                                setTimeout(() => {
+                                    mArtBox_evnt.add_svg({//bg-white
+                                        "w": `100vw`,
+                                        "h": `100vh`,
+                                        "x": 0,
+                                        "y": 0,
+                                        "e": mE,
+                                        "src": `${m_asset_path}/bg_white.svg`
+                                    }, {
+                                        "onLoad": (v = {}) => {
+                                            v.e.style.zIndex = '100';
+                                            mArtBox_evnt.add_animation({
+                                                "e": v.e,
+                                                "type":"animate__fadeInTopLeft"
+                                            });
+
+                                            // Speak now btn:--
+                                            mArtBox_evnt.add_svg({
+                                                "w": `15vw`,
+                                                "h": `15vw`,
+                                                "x": 43,
+                                                "y": 40,
+                                                "e": mE,
+                                                "src": `${m_asset_path}/speak_now_circle_btn.svg`
+                                            }, {
+                                                "onLoad": (v = {}) => {
+                                                    mArtBox_evnt.add_animation({
+                                                        "e": v.e,
+                                                        "type":"animate__fadeIn"
+                                                    });
+                                                    v.e.style.zIndex = '100';
+                                                    v.e.style.cursor = 'pointer';
+                                                },
+                                                "onClick": (v = {}) => {
+                                                    mSendCB(`on_scr_end`, {});
+                                                }
+                                            });
+                                        }
+                                    });
+                                }, 2500);//----
                             }
 
                             mSet(mScr);
@@ -1562,7 +1647,7 @@ let mGameRenderer = (data = {}, mDOM) => {
             });
         };
 
-        mDta_main.screens.set(`scr_1`, {
+        mDta_main.screens.set(`scr_3`, {
             "e": mE, //Html-Element
             "value": {
                 //here you can assign your variable based on your requirements..
@@ -1570,7 +1655,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                 //callback..
                 "cb": {
                     "on_scr_end": (p = {}) => {
-                        scr_2();
+                        scr_4();
                     },
                 }
 
