@@ -85,7 +85,7 @@ let mGameRenderer = (data = {}, mDOM) => {
 
                                         mArtBox_evnt.add_svg({
                                             "w": `30vw`,
-                                            "h": `60vh`,
+                                            "h": `30vw`,
                                             "x": 35,
                                             "y": 25,
                                             "e": mE,
@@ -95,11 +95,12 @@ let mGameRenderer = (data = {}, mDOM) => {
                                                 setTimeout(() => {
                                                     anime({
                                                         targets: v.e,
-                                                        rotate: 150,
+                                                        rotate: 180,
+                                                        loop: true,
                                                         // scale: 2.5,
                                                         easing: 'linear'
                                                     })
-                                                }, 1000);
+                                                }, 100);
 
                                                 // setTimeout(() => {
                                                 //     let logoDiv = document.createElement('div');
@@ -152,7 +153,6 @@ let mGameRenderer = (data = {}, mDOM) => {
                                                             v.e.style.cursor = 'pointer';
                                                         },
                                                         "onClick": (v = {}) => {
-                                                            v.e.style.transform = 'scale(scr_1)';
                                                             on_scr_end();
                                                         }
                                                     });
@@ -171,7 +171,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                         }
                     },
 
-                    // screen - 2---------------------
+                    //Screen 2 -------------------
                     {
                         "name": "Screen 2",
                         "key": "scr_2",
@@ -193,6 +193,19 @@ let mGameRenderer = (data = {}, mDOM) => {
 
                             let mSet = (mE = document.body) => {
 
+                                // Splash 1 - Rotate:--
+                                mArtBox_evnt.add_svg({
+                                    "w": `100vw`,
+                                    "h": `100vh`,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/audio2.svg`
+                                });
+                                setTimeout(() => {
+                                        mArtBox_evnt.add_svg({
+                                         on_scr_end
+                                        }
+                                    );
+                                }, 3500);
 
                                 let on_scr_end = () => {
                                     mSendCB(`on_scr_end`, {});
@@ -203,80 +216,216 @@ let mGameRenderer = (data = {}, mDOM) => {
                         }
                     },
 
-                    // Screen - 3 -----------------------------
+                    // screen - 3---------------------
                     {
                         "name": "Screen 3",
                         "key": "scr_3",
                         "set": (k, v, thisItem) => {
                             console.log(thisItem);
-                            //--reset--// [START]
-                            v["e"].innerHTML = ``; //reset
+                            v["e"].innerHTML = ``; //reset the screen
 
-                            //mSendCB..
                             let mSendCB = (cb_name, p = {}) => {
-                                if (v["value"].hasOwnProperty("cb")) {
-                                    if (v["value"]["cb"].hasOwnProperty(cb_name)) {
-                                        v["value"]["cb"][cb_name](p);
-                                    }
+                                if (v["value"].hasOwnProperty("cb") && v["value"]["cb"].hasOwnProperty(cb_name)) {
+                                    v["value"]["cb"][cb_name](p);
                                 }
                             };
 
-                            //set..
                             let mScr = document.createElement("div");
                             v["e"].appendChild(mScr);
                             mScr.style.height = `100vh`;
                             mScr.style.width = `100%`;
-                            mScr.style.position = "relative";
+                            mScr.style.overflow = `hidden`;
 
                             let mSet = (mE = document.body) => {
 
+                                // Splash 1 - Rotate:--
+                                mArtBox_evnt.add_svg({
+                                    "w": `100vw`,
+                                    "h": `100vh`,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/audio3.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {
+                                        setTimeout(() => {
+                                            mArtBox_evnt.add_svg({
+                                                "w": `100vw`,
+                                                "h": `100vh`,
+                                                "x": 0,
+                                                "y": 0,
+                                                "e": mE,
+                                                "src": `${m_asset_path}/audio3.svg`
+                                            }, {
+                                                "onLoad": (v = {}) => {
+                                                    mArtBox_evnt.add_svg({
+                                                        "w": `7vw`,
+                                                        "h": `5vh`,
+                                                        "x": 78,
+                                                        "y": 84,
+                                                        "e": mE,
+                                                        "src": `${m_asset_path}/next_btn.svg`
+                                                    }, {
+                                                        "onLoad": (v = {}) => {
+                                                            v.e.style.cursor = 'pointer';
+                                                        },
+                                                        "onClick": (v = {}) => {
+                                                            on_scr_end();
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                        }, 100);
+                                    }
+                                });
 
-                            }
+                                let on_scr_end = () => {
+                                    mSendCB(`on_scr_end`, {});
+                                };
+                            };
 
                             mSet(mScr);
                         }
                     },
 
-                    // Screen 4 ---------------------
+                    // Screen - 4 -----------------------------
                     {
                         "name": "Screen 4",
                         "key": "scr_4",
                         "set": (k, v, thisItem) => {
                             console.log(thisItem);
-                            //--reset--// [START]
-                            v["e"].innerHTML = ``; //reset
+                            v["e"].innerHTML = ``; //reset the screen
 
-                            //mSendCB..
                             let mSendCB = (cb_name, p = {}) => {
-                                if (v["value"].hasOwnProperty("cb")) {
-                                    if (v["value"]["cb"].hasOwnProperty(cb_name)) {
-                                        v["value"]["cb"][cb_name](p);
-                                    }
+                                if (v["value"].hasOwnProperty("cb") && v["value"]["cb"].hasOwnProperty(cb_name)) {
+                                    v["value"]["cb"][cb_name](p);
                                 }
                             };
 
-
-                            //set..
                             let mScr = document.createElement("div");
                             v["e"].appendChild(mScr);
-                            mScr.style.height = `100%`;
+                            mScr.style.height = `100vh`;
                             mScr.style.width = `100%`;
                             mScr.style.overflow = `hidden`;
 
-
-                            //set..
                             let mSet = (mE = document.body) => {
 
-                            };
-                            // on_scr_end..
-                            let on_scr_end = () => {
-                                //send cb..
-                                mSendCB(`on_scr_end`, {});
+                                // Splash 1 - Rotate:--
+                                mArtBox_evnt.add_svg({
+                                    "w": `100vw`,
+                                    "h": `100vh`,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/audio5.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {
+                                        setTimeout(() => {
+                                            mArtBox_evnt.add_svg({
+                                                "w": `100vw`,
+                                                "h": `100vh`,
+                                                "x": 0,
+                                                "y": 0,
+                                                "e": mE,
+                                                "src": `${m_asset_path}/audio5.svg`
+                                            }, {
+                                                "onLoad": (v = {}) => {
+                                                    mArtBox_evnt.add_svg({
+                                                        "w": `7vw`,
+                                                        "h": `5vh`,
+                                                        "x": 78,
+                                                        "y": 84,
+                                                        "e": mE,
+                                                        "src": `${m_asset_path}/next_btn.svg`
+                                                    }, {
+                                                        "onLoad": (v = {}) => {
+                                                            v.e.style.cursor = 'pointer';
+                                                        },
+                                                        "onClick": (v = {}) => {
+                                                            on_scr_end();
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                        }, 100);
+                                    }
+                                });
+
+                                let on_scr_end = () => {
+                                    mSendCB(`on_scr_end`, {});
+                                };
                             };
 
                             mSet(mScr);
                         }
                     },
+
+                    // Screen-5 -----------------------------
+                    {
+                        "name": "Screen 5",
+                        "key": "scr_5",
+                        "set": (k, v, thisItem) => {
+                            console.log(thisItem);
+                            v["e"].innerHTML = ``; //reset the screen
+
+                            let mSendCB = (cb_name, p = {}) => {
+                                if (v["value"].hasOwnProperty("cb") && v["value"]["cb"].hasOwnProperty(cb_name)) {
+                                    v["value"]["cb"][cb_name](p);
+                                }
+                            };
+
+                            let mScr = document.createElement("div");
+                            v["e"].appendChild(mScr);
+                            mScr.style.height = `100vh`;
+                            mScr.style.width = `100%`;
+                            mScr.style.overflow = `hidden`;
+
+                            let mSet = (mE = document.body) => {
+
+                                // Splash 1 - Rotate:--
+                                mArtBox_evnt.add_svg({
+                                    "w": `100vw`,
+                                    "h": `100vh`,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/Dashboard 5.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {
+                                        setTimeout(() => {
+                                            mArtBox_evnt.add_svg({
+                                                "w": `100vw`,
+                                                "h": `100vh`,
+                                                "x": 0,
+                                                "y": 0,
+                                                "e": mE,
+                                                "src": `${m_asset_path}/Dashboard 5.svg`
+                                            }, {
+                                                "onLoad": (v = {}) => {
+                                                    mArtBox_evnt.add_svg({
+                                                        "w": `7vw`,
+                                                        "h": `5vh`,
+                                                        "x": 88,
+                                                        "y": 86,
+                                                        "e": mE,
+                                                        "src": `${m_asset_path}/next_btn.svg`
+                                                    }, {
+                                                        "onLoad": (v = {}) => {
+                                                            v.e.style.cursor = 'pointer';
+                                                        },
+                                                        "onClick": (v = {}) => {
+                                                            on_scr_end();
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                        }, 100);
+                                    }
+                                });
+
+                                let on_scr_end = () => {
+                                    mSendCB(`on_scr_end`, {});
+                                };
+                            };
+
+                            mSet(mScr);
+                        }
+                    },
+
 
 
                     // // Screen-5 -----------------------------
