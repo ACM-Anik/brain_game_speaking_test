@@ -1142,7 +1142,83 @@ let mGameRenderer = (data = {}, mDOM) => {
 
                             //set..
                             let mSet = (mE = document.body) => {
-                                
+                                // BG & Next btn:--
+                                mArtBox_evnt.add_svg({
+                                    "w": `100vw`,
+                                    "h": `100vh`,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/skills_progress.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {
+                                        mArtBox_evnt.add_svg({ // Next btn
+                                            "w": `7vw`,
+                                            "h": `5vh`,
+                                            "x": 80,
+                                            "y": 82,
+                                            "e": mE,
+                                            "src": `${m_asset_path}/next_btn.svg`
+                                        }, {
+                                            "onLoad": (v = {}) => {
+                                                v.e.style.cursor = 'pointer';
+                                            },
+                                            "onClick": (v = {}) => {
+                                                congrats();
+                                            }
+                                        });
+                                    }
+                                });
+                                //------
+
+                                let congrats = () => {
+                                    // BG & Next Btn:--
+                                    mArtBox_evnt.add_svg({
+                                        "w": `100vw`,
+                                        "h": `100vh`,
+                                        "x": 0,
+                                        "y": 0,
+                                        "e": mE,
+                                        "src": `${m_asset_path}/bg_blue_white.svg`
+                                    }, {
+                                        "onLoad": (v = {}) => {
+                                            mArtBox_evnt.add_svg({ // Next btn
+                                                "w": `7vw`,
+                                                "h": `5vh`,
+                                                "x": 80,
+                                                "y": 82,
+                                                "e": mE,
+                                                "src": `${m_asset_path}/next_btn.svg`
+                                            }, {
+                                                "onLoad": (v = {}) => {
+                                                    v.e.style.cursor = 'pointer';
+                                                },
+                                                "onClick": (v = {}) => {
+                                                    on_scr_end();
+                                                }
+                                            });
+                                        }
+                                    });//--------
+
+                                    // Congratulations:--
+                                    mArtBox_evnt.add_svg({
+                                        "w": `55vw`,
+                                        "h": `65vh`,
+                                        "x": 23,
+                                        "y": 20,
+                                        "e": mE,
+                                        "src": `${m_asset_path}/congratulations.svg`
+                                    }, {
+                                        "onLoad": (v = {}) => {
+                                            mArtBox_evnt.add_animation({
+                                                "e": v.e,
+                                                "type": "animate__bounceIn"
+                                            });
+                                        },
+                                        "onClick": (v = {}) => {
+                                            on_scr_end();
+                                        }
+                                    });
+
+                                }
 
                                 // on_scr_end..
                                 let on_scr_end = () => {
