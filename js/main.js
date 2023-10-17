@@ -119,24 +119,34 @@ let mGameRenderer = (data = {}, mDOM) => {
                                                     logoDiv.style.left = '46%';
                                                     logoDiv.style.zIndex = '10';
                                                     logoDiv.style.transform = "rotate(25deg)";
-
-                                                    let logoText = document.createElement('h1');
-                                                    logoText.innerText = "Logo"
-                                                    logoText.style.color = '#000';
-                                                    logoText.style.fontSize = '3vh';
-                                                    logoText.style.fontWeight = '600';
-                                                    logoText.style.position = 'absolute';
-                                                    logoText.style.top = '40%';
-                                                    logoText.style.left = '30%';
-                                                    logoText.style.zIndex = '100';
-
-                                                    logoDiv.appendChild(logoText);
+                                                    mArtBox_evnt.add_animation({
+                                                        "e": logoDiv,
+                                                        "type": "animate__zoomIn"
+                                                    });
                                                     let value = v.e;
                                                     value.appendChild(logoDiv);
+
+                                                    setTimeout(() => {
+                                                        let logoText = document.createElement('h1');
+                                                        logoText.innerText = "Logo"
+                                                        logoText.style.color = '#000';
+                                                        logoText.style.fontSize = '3vh';
+                                                        logoText.style.fontWeight = '600';
+                                                        logoText.style.position = 'absolute';
+                                                        logoText.style.top = '40%';
+                                                        logoText.style.left = '30%';
+                                                        logoText.style.zIndex = '100';
+                                                        mArtBox_evnt.add_animation({
+                                                            "e": logoText,
+                                                            "type": "animate__zoomIn"
+                                                        });
+                                                        logoDiv.appendChild(logoText);
+                                                    }, 500);
                                                 }, 3000);
                                             }
                                         });
 
+                                        // Dashboard:--
                                         setTimeout(() => {
                                             mArtBox_evnt.add_svg({
                                                 "w": `100vw`,
@@ -165,7 +175,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                                                     });
                                                 }
                                             });
-                                        }, 3800);
+                                        }, 4000);
                                     }
                                 });
 
@@ -732,7 +742,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                                         setTimeout(() => {
                                             mArtBox_evnt.add_animation({
                                                 "e": v.e,
-                                                "type":"animate__zoomOut"
+                                                "type": "animate__zoomOut"
                                             });
                                             v.e.style.animationDuration = "2s;"
                                         }, 2500);
@@ -753,7 +763,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                                             v.e.style.zIndex = '100';
                                             mArtBox_evnt.add_animation({
                                                 "e": v.e,
-                                                "type":"animate__fadeInTopLeft"
+                                                "type": "animate__fadeInTopLeft"
                                             });
 
                                             // Speak now btn:--
@@ -768,7 +778,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                                                 "onLoad": (v = {}) => {
                                                     mArtBox_evnt.add_animation({
                                                         "e": v.e,
-                                                        "type":"animate__fadeIn"
+                                                        "type": "animate__fadeIn"
                                                     });
                                                     v.e.style.zIndex = '100';
                                                     v.e.style.cursor = 'pointer';
@@ -816,6 +826,138 @@ let mGameRenderer = (data = {}, mDOM) => {
                             //set..
                             let mSet = (mE = document.body) => {
 
+                                // BG Lightblue designed:--
+                                mArtBox_evnt.add_svg({ //1
+                                    "w": `100vw`,
+                                    "h": `100vh`,
+                                    // "x": 0,
+                                    // "y": 0,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/bg_lightblue_designed_1.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {}
+                                });
+
+                                // BG white:--
+                                mArtBox_evnt.add_svg({//bg-white
+                                    "w": `80vw`,
+                                    "h": `80vh`,
+                                    "x": 10,
+                                    "y": 10,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/bg_white.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {
+                                        v.e.style.zIndex = '100';
+
+                                        // Countdown length:--
+                                        mArtBox_evnt.add_svg({
+                                            "w": `75vw`,
+                                            "h": `2vh`,
+                                            "x": 12,
+                                            "y": 16,
+                                            "e": mE,
+                                            "src": `${m_asset_path}/countdown_length1.svg`
+                                        }, {
+                                            "onLoad": (v = {}) => {
+                                                v.e.style.zIndex = '100';
+                                                v.e.style.opacity = '0';
+                                                setTimeout(() => {
+                                                    v.e.style.opacity = 1;
+                                                    anime({
+                                                        targets: v.e,
+                                                        width: ['0%', '50%'],
+                                                        width: ['50%', '100%'],
+                                                        duration: 5000,
+                                                        easing: 'easeInOutQuad'
+                                                    });
+                                                }, 500);
+                                            }
+                                        });
+                                        
+                                        // Rose and headline:--
+                                        mArtBox_evnt.add_svg({
+                                            "w": `68vw`,
+                                            "h": `44vh`,
+                                            "x": 16,
+                                            "y": 20,
+                                            "e": mE,
+                                            "src": `${m_asset_path}/rose_and_headline.svg`
+                                        }, {
+                                            "onLoad": (v = {}) => {
+                                                v.e.style.zIndex = '100';
+                                            }
+                                        });
+
+                                        // "Use the words in your speech" - text:--
+                                        mArtBox_evnt.add_svg({
+                                            "w": `30vw`,
+                                            "h": `5vh`,
+                                            "x": 16,
+                                            "y": 55,
+                                            "e": mE,
+                                            "src": `${m_asset_path}/use_the_words_text.svg`
+                                        }, {
+                                            "onLoad": (v = {}) => {
+                                                mArtBox_evnt.add_animation({
+                                                    "e": v.e,
+                                                    "type": "animate__slideInUp"
+                                                });
+                                                v.e.style.zIndex = '100';
+                                            }
+                                        });
+
+                                        // Words in quad:--
+                                        mArtBox_evnt.add_svg({
+                                            "w": `40vw`,
+                                            "h": `10vh`,
+                                            "x": 16,
+                                            "y": 70,
+                                            "e": mE,
+                                            "src": `${m_asset_path}/words_in_quad.svg`
+                                        }, {
+                                            "onLoad": (v = {}) => {
+                                                v.e.style.zIndex = '100';
+                                            }
+                                        });
+
+                                        // Words in bilateral:--
+                                        mArtBox_evnt.add_svg({
+                                            "w": `20vw`,
+                                            "h": `10vh`,
+                                            "x": 53,
+                                            "y": 70,
+                                            "e": mE,
+                                            "src": `${m_asset_path}/words_in_bilateral.svg`
+                                        }, {
+                                            "onLoad": (v = {}) => {
+                                                v.e.style.zIndex = '100';
+                                            }
+                                        });
+
+                                        // Record button:--
+                                        mArtBox_evnt.add_svg({
+                                            "w": `10vw`,
+                                            "h": `6vh`,
+                                            "x": 75,
+                                            "y": 74,
+                                            "e": mE,
+                                            "src": `${m_asset_path}/rec.svg`
+                                        }, {
+                                            "onLoad": (v = {}) => {
+                                                mArtBox_evnt.add_animation({
+                                                    "e": v.e,
+                                                    "type": "animate__fadeIn"
+                                                });
+                                                v.e.style.zIndex = '100';
+                                            },
+                                            "onClick": (v = {}) => {
+                                                // mSendCB(`on_scr_end`, {});
+                                            }
+                                        });
+                                    }
+                                });
+
                             };
                             // on_scr_end..
                             let on_scr_end = () => {
@@ -828,338 +970,43 @@ let mGameRenderer = (data = {}, mDOM) => {
                     },
 
 
-                    // // Screen-5 -----------------------------
-                    // {
-                    //     "name": "Screen 5",
-                    //     "key": "scr_5",
-                    //     "set": (k, v, thisItem) => {
-                    //         console.log(thisItem);
-                    //         v["e"].innerHTML = ``; //reset the screen
+                    // Screen-5 -----------------------------
+                    {
+                        "name": "Screen 5",
+                        "key": "scr_5",
+                        "set": (k, v, thisItem) => {
+                            console.log(thisItem);
+                            v["e"].innerHTML = ``; //reset the screen
 
 
-                    //         // mSendCB..
-                    //         let mSendCB = (cb_name, p = {}) => {
-                    //             if (v["value"].hasOwnProperty("cb")) {
-                    //                 if (v["value"]["cb"].hasOwnProperty(cb_name)) {
-                    //                     v["value"]["cb"][cb_name](p);
-                    //                 }
-                    //             }
-                    //         };
+                            // mSendCB..
+                            let mSendCB = (cb_name, p = {}) => {
+                                if (v["value"].hasOwnProperty("cb")) {
+                                    if (v["value"]["cb"].hasOwnProperty(cb_name)) {
+                                        v["value"]["cb"][cb_name](p);
+                                    }
+                                }
+                            };
 
-                    //         //set..
-                    //         let mScr = document.createElement("div");
-                    //         v["e"].appendChild(mScr);
-                    //         mScr.style.height = `100vh`;
-                    //         mScr.style.width = `100%`;
-                    //         mScr.style.overflow = `hidden`;
+                            //set..
+                            let mScr = document.createElement("div");
+                            v["e"].appendChild(mScr);
+                            mScr.style.height = `100vh`;
+                            mScr.style.width = `100%`;
+                            mScr.style.overflow = `hidden`;
 
-                    //         //set..
-                    //         let mSet = (mE = document.body) => {
-                    //             // BG:--
-                    //             mArtBox_evnt.add_svg({
-                    //                 "w": `100vw`,
-                    //                 "h": `100vh`,
-                    //                 "e": mE,
-                    //                 "src": `${m_asset_path}/bg.svg`
-                    //             }, {
-                    //                 "onLoad": (v = {}) => {
-                    //                     mArtBox_evnt.add_svg({
-                    //                         "w": `5.3vw`,
-                    //                         "h": `6vh`,
-                    //                         "x": 4,
-                    //                         "y": 76,
-                    //                         "e": mE,
-                    //                         "src": `${m_asset_path}/little_square.svg`
-                    //                     }, {
-                    //                         "onLoad": (v = {}) => {
-
-                    //                         }
-                    //                     });
-                    //                 }
-                    //             });
-
-                    //             // Garland of positive and negative(except one negative sign and two positive sign):--
-                    //             mArtBox_evnt.add_svg({
-                    //                 "w": `100vw`,
-                    //                 "h": `100vh`,
-                    //                 "x": -2,
-                    //                 "y": -5,
-                    //                 "e": mE,
-                    //                 "src": `${m_asset_path}/garland_2_pos_1_neg_less.svg`
-                    //             });
-
-                    //             mArtBox_evnt.add_svg({ //one neg sign:- to move down
-                    //                 "w": `5vw`,
-                    //                 "h": `2vh`,
-                    //                 "x": 20,
-                    //                 "y": 84,
-                    //                 "e": mE,
-                    //                 "src": `${m_asset_path}/neg_sign.svg`
-                    //             }, {
-                    //                 "onLoad": (v = {}) => {
-                    //                     setTimeout(() => {
-                    //                         anime({
-                    //                             targets: v.e,
-                    //                             translateX: [-110, 0],
-                    //                             translateY: [-245, 0],
-                    //                             duration: 500,
-                    //                             easing: 'linear'
-                    //                         });
-                    //                     }, 2500);
-
-                    //                 }
-                    //             });//------
-
-                    //             mArtBox_evnt.add_svg({ //one neg sign:- to move above
-                    //                 "w": `4.5vw`,
-                    //                 "h": `2vh`,
-                    //                 "x": 20,
-                    //                 "y": 84,
-                    //                 "e": mE,
-                    //                 "src": `${m_asset_path}/neg_sign.svg`
-                    //             }, {
-                    //                 "onLoad": (v = {}) => {
-                    //                     setTimeout(() => {
-                    //                         anime({
-                    //                             targets: v.e,
-                    //                             translateX: '42.5vw',
-                    //                             translateY: -120,
-                    //                             duration: 500,
-                    //                             easing: 'linear'
-                    //                         });
-                    //                     }, 2500);
-
-                    //                 }
-                    //             });//--------
-
-                    //             mArtBox_evnt.add_svg({ //one pos sign:- to move down
-                    //                 "w": `4.5vw`,
-                    //                 "h": `5.5vh`,
-                    //                 "x": 70,
-                    //                 "y": 19,
-                    //                 "e": mE,
-                    //                 "src": `${m_asset_path}/pos_sign.svg`
-                    //             }, {
-                    //                 "onLoad": (v = {}) => {
-                    //                     setTimeout(() => {
-                    //                         anime({
-                    //                             targets: v.e,
-                    //                             translateX: '22vw',
-                    //                             translateY: '30vh',
-                    //                             duration: 500,
-                    //                             easing: 'linear'
-                    //                         });
-                    //                     }, 2500);
-
-                    //                     let changePosition = () => {
-                    //                         anime({
-                    //                             targets: v.e,
-                    //                             translateX: '-22vw',
-                    //                             translateY: '-30vh',
-                    //                             duration: 500,
-                    //                             easing: 'linear'
-                    //                         });
-                    //                     }
-                    //                 }
-                    //             });//-------
-
-                    //             mArtBox_evnt.add_svg({ //one pos sign:- to move above
-                    //                 "w": `4.5vw`,
-                    //                 "h": `5.5vh`,
-                    //                 "x": 92,
-                    //                 "y": 52,
-                    //                 "e": mE,
-                    //                 "src": `${m_asset_path}/pos_sign.svg`
-                    //             }, {
-                    //                 "onLoad": (v = {}) => {
-                    //                     setTimeout(() => {
-                    //                         anime({
-                    //                             targets: v.e,
-                    //                             translateX: '-20vw',
-                    //                             translateY: '-30vh',
-                    //                             duration: 500,
-                    //                             easing: 'linear'
-                    //                         });
-                    //                     }, 2500);
-
-                    //                     let changePosition = () => {
-                    //                         anime({
-                    //                             targets: v.e,
-                    //                             translateX: '20vw',
-                    //                             translateY: '30vh',
-                    //                             duration: 500,
-                    //                             easing: 'linear'
-                    //                         });
-                    //                     }
-                    //                 }
-                    //             }); //-------
-
-                    //             // Quiz:--
-                    //             mArtBox_evnt.add_svg({ // Question container
-                    //                 "w": `41vw`,
-                    //                 "h": `18vh`,
-                    //                 "x": 31,
-                    //                 "y": 28,
-                    //                 "e": mE,
-                    //                 "src": `${m_asset_path}/ques_container.svg`
-                    //             }, {
-                    //                 "onLoad": (v = {}) => {
-                    //                     v.e.style.opacity = "0";
-                    //                     v.e.style.zIndex = "0";
-                    //                     setTimeout(() => {
-                    //                         anime({
-                    //                             opacity: 1,
-                    //                             targets: v.e,
-                    //                             scale: [110, 1],
-                    //                             duration: 1000,
-                    //                             easing: 'spring(1, 80, 10, 0)',
-                    //                         });
-                    //                     }, 0);
-
-                    //                     mArtBox_evnt.add_svg({ // Ques. text
-                    //                         "w": `25vw`,
-                    //                         "h": `12vh`,
-                    //                         "x": 40,
-                    //                         "y": 33,
-                    //                         "e": mE,
-                    //                         "src": `${m_asset_path}/ques_text.svg`
-                    //                     }, {
-                    //                         "onLoad": (v = {}) => {
-                    //                             v.e.style.opacity = "0";
-                    //                             setTimeout(() => {
-                    //                                 anime({
-                    //                                     opacity: 1,
-                    //                                     targets: v.e,
-                    //                                     duration: 600,
-                    //                                     easing: 'linear'
-                    //                                 });
-                    //                             }, 1500);
-                    //                         }
-                    //                     });//-----
+                            //set..
+                            let mSet = (mE = document.body) => {
+                                // BG:--
 
 
-                    //                 }
-                    //             });//-----
+                                //------------|
 
-                    //             setTimeout(() => { // Option Circle 1
-                    //                 mArtBox_evnt.add_svg({
-                    //                     "w": `13vw`,
-                    //                     "h": `20vh`,
-                    //                     "x": 32,
-                    //                     "y": 57,
-                    //                     "e": mE,
-                    //                     "src": `${m_asset_path}/option_circle_1.svg`
-                    //                 }, {
-                    //                     "onLoad": (v = {}) => {
-                    //                         v.e.style.opacity = "0";
-                    //                         v.e.style.cursor = "pointer";
-                    //                         v.e.style.zIndex = "10";
-                    //                         setTimeout(() => {
-                    //                             anime({
-                    //                                 opacity: 1,
-                    //                                 targets: v.e,
-                    //                                 duration: 600,
-                    //                                 easing: 'linear'
-                    //                             });
-                    //                         }, 100);
-                    //                         setTimeout(() => {
-                    //                             mArtBox_evnt.add_svg({
-                    //                                 "w": `4.5vw`,
-                    //                                 "h": `5.5vh`,
-                    //                                 "x": 36.5,
-                    //                                 "y": 65,
-                    //                                 "e": mE,
-                    //                                 "src": `${m_asset_path}/pos_sign.svg`
-                    //                             }, {
-                    //                                 "onLoad": (v = {}) => {
-                    //                                     v.e.style.opacity = "0";
-                    //                                     anime({
-                    //                                         opacity: 1,
-                    //                                         targets: v.e,
-                    //                                         duration: 600,
-                    //                                         easing: 'linear'
-                    //                                     });
-                    //                                 }
-                    //                             });
-                    //                         }, 1000);//------
-                    //                     },
-                    //                     "onClick": (v = {}) => {
-                    //                         // changePosition();
+                            };
 
-                    //                         mArtBox_evnt.add_svg({
-                    //                             "w": `13vw`,
-                    //                             "h": `20vh`,
-                    //                             "x": 32,
-                    //                             "y": 57,
-                    //                             "e": mE,
-                    //                             "src": `${m_asset_path}/green+.svg`
-                    //                         }, {
-                    //                             "onLoad": (v = {}) => {
-                    //                                 v.e.style.disabled = "true";
-                    //                                 v.e.style.zIndex = "100";
-                    //                             }
-                    //                         });
-
-                    //                         setTimeout(() => {
-                    //                             //send cb..
-                    //                             mSendCB(`on_scr_end`, { "scr": true });
-                    //                         }, 500);
-                    //                     }
-                    //                 });
-                    //             }, 2000);//-----
-
-                    //             setTimeout(() => { // Option Circle 2
-                    //                 mArtBox_evnt.add_svg({
-                    //                     "w": `13vw`,
-                    //                     "h": `20vh`,
-                    //                     "x": 58,
-                    //                     "y": 57,
-                    //                     "e": mE,
-                    //                     "src": `${m_asset_path}/option_circle_2.svg`
-                    //                 }, {
-                    //                     "onLoad": (v = {}) => {
-                    //                         v.e.style.opacity = "0";
-                    //                         v.e.style.cursor = "pointer";
-                    //                         setTimeout(() => {
-                    //                             anime({
-                    //                                 opacity: 1,
-                    //                                 targets: v.e,
-                    //                                 duration: 600,
-                    //                                 easing: 'linear'
-                    //                             });
-                    //                         }, 100);
-                    //                     },
-                    //                     "onClick": (v = {}) => {
-                    //                         // changePosition();
-
-                    //                         mArtBox_evnt.add_svg({
-                    //                             "w": `13vw`,
-                    //                             "h": `20vh`,
-                    //                             "x": 58,
-                    //                             "y": 57,
-                    //                             "e": mE,
-                    //                             "src": `${m_asset_path}/red-.svg`
-                    //                         }, {
-                    //                             "onLoad": (v = {}) => {
-                    //                                 v.e.style.disabled = "true";
-                    //                             }
-                    //                         });
-
-                    //                         setTimeout(() => {
-                    //                             //send cb..
-                    //                             mSendCB(`on_scr_end`, { "scr": false });
-                    //                         }, 500);
-                    //                     }
-                    //                 });
-                    //             }, 2000);//------
-
-                    //             //------------|
-
-                    //         };
-
-                    //         mSet(mScr);
-                    //     }
-                    // },
+                            mSet(mScr);
+                        }
+                    },
 
                     // // Screen-5_1 -----------------------------
                     // {
@@ -1568,20 +1415,20 @@ let mGameRenderer = (data = {}, mDOM) => {
             });
         };
 
-        let scr_3 = () => {
-            mDta_main.screens.set(`scr_3`, {
-                "e": mE,
-                "value": {
-                    //here you can assign your variable based on your requirements..
-                    //callback..
-                    "cb": {
-                        "on_scr_end": (p = {}) => {
-                            scr_4();
-                        },
-                    }
-                }
-            });
-        };
+        // let scr_3 = () => {
+        //     mDta_main.screens.set(`scr_3`, {
+        //         "e": mE,
+        //         "value": {
+        //             //here you can assign your variable based on your requirements..
+        //             //callback..
+        //             "cb": {
+        //                 "on_scr_end": (p = {}) => {
+        //                     scr_4();
+        //                 },
+        //             }
+        //         }
+        //     });
+        // };
 
         let scr_2_2 = () => {
             mDta_main.screens.set(`scr_2_2`, {
@@ -1647,7 +1494,7 @@ let mGameRenderer = (data = {}, mDOM) => {
             });
         };
 
-        mDta_main.screens.set(`scr_3`, {
+        mDta_main.screens.set(`scr_4`, {
             "e": mE, //Html-Element
             "value": {
                 //here you can assign your variable based on your requirements..
@@ -1655,7 +1502,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                 //callback..
                 "cb": {
                     "on_scr_end": (p = {}) => {
-                        scr_4();
+                        // scr_4();
                     },
                 }
 
