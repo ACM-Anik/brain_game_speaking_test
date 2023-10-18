@@ -1289,8 +1289,38 @@ let mGameRenderer = (data = {}, mDOM) => {
 
                             //set..
                             let mSet = (mE = document.body) => {
-                                // BG:--
-
+                                // BG lightblue - loading:--
+                                mArtBox_evnt.add_svg({
+                                    "w": `100vw`,
+                                    "h": `100vh`,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/bg_lightblue.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {
+                                        // loading:--
+                                        mArtBox_evnt.add_svg({
+                                            "w": `16vw`,
+                                            "h": `16vw`,
+                                            "x": 42,
+                                            "y": 30,
+                                            "e": mE,
+                                            "src": `${m_asset_path}/loading_1.svg`
+                                        }, {
+                                            "onLoad": (v = {}) => {
+                                                setTimeout(() => {
+                                                    anime({
+                                                        targets: v.e,
+                                                        rotate: 360,
+                                                        duration: 2000,
+                                                        loop: true,
+                                                        easing: 'linear'
+                                                    })
+                                                }, 100);
+        
+                                            }
+                                        });//-----
+                                    }
+                                });
 
                                 // on_scr_end..
                                 let on_scr_end = () => {
@@ -1469,7 +1499,7 @@ let mGameRenderer = (data = {}, mDOM) => {
             });
         };
 
-        mDta_main.screens.set(`scr_6`, {
+        mDta_main.screens.set(`scr_7`, {
             "e": mE, //Html-Element
             "value": {
                 //here you can assign your variable based on your requirements..
@@ -1477,7 +1507,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                 //callback..
                 "cb": {
                     "on_scr_end": (p = {}) => {
-                        scr_7();
+                        // scr_7();
                     },
                 }
 
