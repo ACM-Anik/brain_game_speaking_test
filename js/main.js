@@ -973,7 +973,6 @@ let mGameRenderer = (data = {}, mDOM) => {
                         }
                     },
 
-
                     // Screen-5 -----------------------------
                     {
                         "name": "Screen 5",
@@ -1041,7 +1040,7 @@ let mGameRenderer = (data = {}, mDOM) => {
 
                                 // Missing Words:--
                                 mArtBox_evnt.add_svg({//Missing words - text
-                                    "w": `15vw`,
+                                    "w": `13vw`,
                                     "h": `4vh`,
                                     "x": 17,
                                     "y": 60,
@@ -1057,8 +1056,8 @@ let mGameRenderer = (data = {}, mDOM) => {
                                 });
 
                                 mArtBox_evnt.add_svg({//first class red
-                                    "w": `20vw`,
-                                    "h": `8vh`,
+                                    "w": `15vw`,
+                                    "h": `5vh`,
                                     "x": 20,
                                     "y": 70,
                                     "e": mE,
@@ -1068,21 +1067,31 @@ let mGameRenderer = (data = {}, mDOM) => {
                                         v.e.style.cursor = 'pointer';
                                     },
                                     "onClick": (v = {}) => {
-                                        mArtBox_evnt.add_svg({//toolkit - first class
-                                            "w": `12vw`,
-                                            "h": `8vh`,
-                                            "x": 25,
-                                            "y": 76,
-                                            "e": mE,
-                                            "src": `${m_asset_path}/toolkit_first_class.svg`
-                                        });
+                                        let existingDiv = v.e.querySelector('div');
+
+                                        if (existingDiv) {
+                                            console.log('Div already exists.');
+                                            v.e.disabled = true;
+                                        } else {
+                                            const newDiv = document.createElement('div');
+                                            v.e.appendChild(newDiv);
+
+                                            mArtBox_evnt.add_svg({// toolkit - first class red
+                                                "w": `12vw`,
+                                                "h": `8vh`,
+                                                "x": 30,
+                                                "y": 74,
+                                                "e": mE,
+                                                "src": `${m_asset_path}/toolkit_first_class.svg`
+                                            });
+                                        }
                                     }
                                 });
 
                                 mArtBox_evnt.add_svg({//shabby red
-                                    "w": `20vw`,
-                                    "h": `8vh`,
-                                    "x": 50,
+                                    "w": `15vw`,
+                                    "h": `5vh`,
+                                    "x": 40,
                                     "y": 70,
                                     "e": mE,
                                     "src": `${m_asset_path}/shabby_red.svg`
@@ -1091,14 +1100,24 @@ let mGameRenderer = (data = {}, mDOM) => {
                                         v.e.style.cursor = 'pointer';
                                     },
                                     "onClick": (v = {}) => {
-                                        mArtBox_evnt.add_svg({// toolkit - shabby red
-                                            "w": `12vw`,
-                                            "h": `8vh`,
-                                            "x": 55,
-                                            "y": 76,
-                                            "e": mE,
-                                            "src": `${m_asset_path}/toolkit_shabby.svg`
-                                        });
+                                        let existingDiv = v.e.querySelector('div');
+
+                                        if (existingDiv) {
+                                            console.log('Div already exists.');
+                                            v.e.disabled = true;
+                                        } else {
+                                            const newDiv = document.createElement('div');
+                                            v.e.appendChild(newDiv);
+
+                                            mArtBox_evnt.add_svg({// toolkit - shabby red
+                                                "w": `12vw`,
+                                                "h": `8vh`,
+                                                "x": 50,
+                                                "y": 74,
+                                                "e": mE,
+                                                "src": `${m_asset_path}/toolkit_shabby.svg`
+                                            });
+                                        }
                                     }
                                 });
                                 //------------|
@@ -1204,7 +1223,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                                         "x": 23,
                                         "y": 20,
                                         "e": mE,
-                                        "src": `${m_asset_path}/congratulations.svg`
+                                        "src": `${m_asset_path}/congrats_4stars.svg`
                                     }, {
                                         "onLoad": (v = {}) => {
                                             mArtBox_evnt.add_animation({
@@ -1572,17 +1591,133 @@ let mGameRenderer = (data = {}, mDOM) => {
 
                             //set..
                             let mSet = (mE = document.body) => {
-                                // BG lightblue - loading:--
+                                // BG - white and blue & Next Btn:--
                                 mArtBox_evnt.add_svg({
                                     "w": `100vw`,
                                     "h": `100vh`,
+                                    "x": 0,
+                                    "y": 0,
                                     "e": mE,
-                                    "src": `${m_asset_path}/bg_lightblue.svg`
+                                    "src": `${m_asset_path}/bg_blue_white.svg`
                                 }, {
                                     "onLoad": (v = {}) => {
+                                        mArtBox_evnt.add_svg({ // Next btn
+                                            "w": `7vw`,
+                                            "h": `5vh`,
+                                            "x": 80,
+                                            "y": 82,
+                                            "e": mE,
+                                            "src": `${m_asset_path}/next_btn.svg`
+                                        }, {
+                                            "onLoad": (v = {}) => {
+                                                v.e.style.cursor = 'pointer';
+                                            },
+                                            "onClick": (v = {}) => {
+                                                on_scr_end();
+                                            }
+                                        });
+                                    }
+                                });//--------
 
+                                // Replied text about the video:--
+                                mArtBox_evnt.add_svg({
+                                    "w": `66vw`,
+                                    "h": `30vh`,
+                                    "x": 17,
+                                    "y": 20,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/replied_text_about_rose.svg`
+                                });//-------
+
+                                // Missing Words:--
+                                mArtBox_evnt.add_svg({//Missing words - text
+                                    "w": `13vw`,
+                                    "h": `4vh`,
+                                    "x": 17,
+                                    "y": 60,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/missing_words_text.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {
+                                        v.e.style.cursor = 'pointer';
+                                    },
+                                    "onClick": (v = {}) => {
+                                        on_scr_end();
                                     }
                                 });
+
+                                mArtBox_evnt.add_svg({//first class - red
+                                    "w": `15vw`,
+                                    "h": `5vh`,
+                                    "x": 20,
+                                    "y": 70,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/first_class_red.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {
+                                        v.e.style.cursor = 'pointer';
+                                    },
+                                    "onClick": (v = {}) => {
+                                        let existingDiv = v.e.querySelector('div');
+
+                                        if (existingDiv) {
+                                            console.log('Div already exists.');
+                                            v.e.disabled = true;
+                                        } else {
+                                            const newDiv = document.createElement('div');
+                                            v.e.appendChild(newDiv);
+
+                                            mArtBox_evnt.add_svg({
+                                                "w": `12vw`,
+                                                "h": `8vh`,
+                                                "x": 30,
+                                                "y": 74,
+                                                "e": mE,
+                                                "src": `${m_asset_path}/toolkit_first_class.svg`
+                                            });
+                                        }
+                                    }
+                                });
+
+                                mArtBox_evnt.add_svg({//shabby - red
+                                    "w": `15vw`,
+                                    "h": `5vh`,
+                                    "x": 40,
+                                    "y": 70,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/shabby_red.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {
+                                        v.e.style.cursor = 'pointer';
+                                    },
+                                    "onClick": (v = {}) => {
+                                        let existingDiv = v.e.querySelector('div');
+
+                                        if (existingDiv) {
+                                            console.log('Div already exists.');
+                                            v.e.disabled = true;
+                                        } else {
+                                            const newDiv = document.createElement('div');
+                                            v.e.appendChild(newDiv);
+
+                                            mArtBox_evnt.add_svg({// toolkit - shabby red
+                                                "w": `12vw`,
+                                                "h": `8vh`,
+                                                "x": 50,
+                                                "y": 74,
+                                                "e": mE,
+                                                "src": `${m_asset_path}/toolkit_shabby.svg`
+                                            });
+                                        }
+                                    }
+                                });
+                                //------------|
+
+                                // on_scr_end..
+                                let on_scr_end = () => {
+                                    //send cb..
+                                    mSendCB(`on_scr_end`, {});
+                                };
                             };
                             mSet(mScr);
                         }
@@ -1616,17 +1751,84 @@ let mGameRenderer = (data = {}, mDOM) => {
 
                             //set..
                             let mSet = (mE = document.body) => {
-                                // BG lightblue - loading:--
+                                // BG & Next btn:--
                                 mArtBox_evnt.add_svg({
                                     "w": `100vw`,
                                     "h": `100vh`,
                                     "e": mE,
-                                    "src": `${m_asset_path}/bg_lightblue.svg`
+                                    "src": `${m_asset_path}/skills_progress.svg`
                                 }, {
                                     "onLoad": (v = {}) => {
-
+                                        mArtBox_evnt.add_svg({ // Next btn
+                                            "w": `7vw`,
+                                            "h": `5vh`,
+                                            "x": 80,
+                                            "y": 82,
+                                            "e": mE,
+                                            "src": `${m_asset_path}/next_btn.svg`
+                                        }, {
+                                            "onLoad": (v = {}) => {
+                                                v.e.style.cursor = 'pointer';
+                                            },
+                                            "onClick": (v = {}) => {
+                                                congrats();
+                                            }
+                                        });
                                     }
-                                });
+                                });//------
+
+                                let congrats = () => {
+                                    // BG & Next Btn:--
+                                    mArtBox_evnt.add_svg({
+                                        "w": `100vw`,
+                                        "h": `100vh`,
+                                        "x": 0,
+                                        "y": 0,
+                                        "e": mE,
+                                        "src": `${m_asset_path}/bg_blue_white.svg`
+                                    }, {
+                                        "onLoad": (v = {}) => {
+                                            mArtBox_evnt.add_svg({ // Next btn
+                                                "w": `7vw`,
+                                                "h": `5vh`,
+                                                "x": 80,
+                                                "y": 82,
+                                                "e": mE,
+                                                "src": `${m_asset_path}/next_btn.svg`
+                                            }, {
+                                                "onLoad": (v = {}) => {
+                                                    v.e.style.cursor = 'pointer';
+                                                },
+                                                "onClick": (v = {}) => {
+                                                    on_scr_end();
+                                                }
+                                            });
+                                        }
+                                    });//--------
+
+                                    // Congratulations:--
+                                    mArtBox_evnt.add_svg({
+                                        "w": `55vw`,
+                                        "h": `65vh`,
+                                        "x": 23,
+                                        "y": 20,
+                                        "e": mE,
+                                        "src": `${m_asset_path}/congrats_3stars.svg`
+                                    }, {
+                                        "onLoad": (v = {}) => {
+                                            mArtBox_evnt.add_animation({
+                                                "e": v.e,
+                                                "type": "animate__bounceIn"
+                                            });
+                                        }
+                                    });//-----
+                                }//---------|
+
+                                // on_scr_end..
+                                let on_scr_end = () => {
+                                    //send cb..
+                                    mSendCB(`on_scr_end`, {});
+                                };
                             };
                             mSet(mScr);
                         }
@@ -1659,6 +1861,49 @@ let mGameRenderer = (data = {}, mDOM) => {
     // //mStart..
     let mStart = (mE) => {
 
+        let scr_13 = () => {
+            mDta_main.screens.set(`scr_13`, {
+                "e": mE,
+                "value": {
+                    //here you can assign your variable based on your requirements..
+                    //callback..
+                    "cb": {
+                        "on_scr_end": (p = {}) => {
+                            // scr_14()
+                        },
+                    }
+                }
+            });
+        };
+        let scr_12 = () => {
+            mDta_main.screens.set(`scr_12`, {
+                "e": mE,
+                "value": {
+                    //here you can assign your variable based on your requirements..
+                    //callback..
+                    "cb": {
+                        "on_scr_end": (p = {}) => {
+                            scr_13()
+                        },
+                    }
+                }
+            });
+        };
+
+        let scr_11 = () => {
+            mDta_main.screens.set(`scr_11`, {
+                "e": mE,
+                "value": {
+                    //here you can assign your variable based on your requirements..
+                    //callback..
+                    "cb": {
+                        "on_scr_end": (p = {}) => {
+                            scr_12()
+                        },
+                    }
+                }
+            });
+        };
         let scr_10 = () => {
             mDta_main.screens.set(`scr_10`, {
                 "e": mE,
@@ -1667,7 +1912,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                     //callback..
                     "cb": {
                         "on_scr_end": (p = {}) => {
-
+                            scr_11()
                         },
                     }
                 }
@@ -1689,20 +1934,20 @@ let mGameRenderer = (data = {}, mDOM) => {
             });
         };
 
-        // let scr_8 = () => {
-        //     mDta_main.screens.set(`scr_8`, {
-        //         "e": mE,
-        //         "value": {
-        //             //here you can assign your variable based on your requirements..
-        //             //callback..
-        //             "cb": {
-        //                 "on_scr_end": (p = {}) => {
-        //                     scr_9()
-        //                 },
-        //             }
-        //         }
-        //     });
-        // };
+        let scr_8 = () => {
+            mDta_main.screens.set(`scr_8`, {
+                "e": mE,
+                "value": {
+                    //here you can assign your variable based on your requirements..
+                    //callback..
+                    "cb": {
+                        "on_scr_end": (p = {}) => {
+                            scr_9()
+                        },
+                    }
+                }
+            });
+        };
 
         let scr_7 = () => {
             mDta_main.screens.set(`scr_7`, {
@@ -1843,7 +2088,7 @@ let mGameRenderer = (data = {}, mDOM) => {
             });
         };
 
-        mDta_main.screens.set(`scr_8`, {
+        mDta_main.screens.set(`scr_9`, {
             "e": mE, //Html-Element
             "value": {
                 //here you can assign your variable based on your requirements..
@@ -1851,7 +2096,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                 //callback..
                 "cb": {
                     "on_scr_end": (p = {}) => {
-                        scr_9();
+                        scr_10();
                     },
                 }
 
