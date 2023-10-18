@@ -1036,7 +1036,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                                     "y": 20,
                                     "e": mE,
                                     "src": `${m_asset_path}/replied_text_about_rose.svg`
-                                });
+                                });//-------
 
                                 // Missing Words:--
                                 mArtBox_evnt.add_svg({//Missing words - text
@@ -1100,7 +1100,6 @@ let mGameRenderer = (data = {}, mDOM) => {
                                         });
                                     }
                                 });
-
                                 //------------|
 
                                 // on_scr_end..
@@ -1166,8 +1165,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                                             }
                                         });
                                     }
-                                });
-                                //------
+                                });//------
 
                                 let congrats = () => {
                                     // BG & Next Btn:--
@@ -1215,7 +1213,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                                         }
                                     });//------
 
-                                }
+                                }//------
 
                                 // Dashboard:--
                                 let dashboard = () => {
@@ -1471,7 +1469,7 @@ let mGameRenderer = (data = {}, mDOM) => {
             });
         };
 
-        mDta_main.screens.set(`scr_5`, {
+        mDta_main.screens.set(`scr_6`, {
             "e": mE, //Html-Element
             "value": {
                 //here you can assign your variable based on your requirements..
@@ -1479,7 +1477,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                 //callback..
                 "cb": {
                     "on_scr_end": (p = {}) => {
-                        scr_6();
+                        scr_7();
                     },
                 }
 
