@@ -77,7 +77,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                                         setTimeout(() => {
                                             anime({
                                                 targets: v.e,
-                                                rotate: 65,
+                                                rotate: 60,
                                                 scale: 2.5,
                                                 easing: 'linear'
                                             })
@@ -191,7 +191,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                         }
                     },
 
-                    // screen - 2---------------------
+                    // screen - 2------------------------------
                     {
                         "name": "Screen 2",
                         "key": "scr_2",
@@ -610,7 +610,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                     },
 
                     // Rose-image screens:--
-                    // Screen - 3 -----------------------------
+                    // Screen - 3 ----------------------------
                     {
                         "name": "Screen 3",
                         "key": "scr_3",
@@ -785,7 +785,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                         }
                     },
 
-                    // Screen 4 ---------------------
+                    // Screen 4 ------------------------------
                     {
                         "name": "Screen 4",
                         "key": "scr_4",
@@ -962,7 +962,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                         }
                     },
 
-                    // Screen-5 -----------------------------
+                    // Screen-5 ------------------------------
                     {
                         "name": "Screen 5",
                         "key": "scr_5",
@@ -1122,7 +1122,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                         }
                     },
 
-                    // Screen-6 -----------------------------
+                    // Screen-6 ------------------------------
                     {
                         "name": "Screen 6",
                         "key": "scr_6",
@@ -1234,7 +1234,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                     },
 
                     // Video - Screens:--
-                    // Screen-7 -----------------------------
+                    // Screen-7 ------------------------------
                     {
                         "name": "Screen 7",
                         "key": "scr_7",
@@ -1268,7 +1268,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                                     "w": `100vw`,
                                     "h": `100vh`,
                                     "e": mE,
-                                    "src": `${m_asset_path}/dashboard.svg`
+                                    "src": `${m_asset_path}/dashboard_2.svg`
                                 }, {
                                     "onLoad": (v = {}) => {
                                         mArtBox_evnt.add_animation({
@@ -1349,7 +1349,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                         }
                     },
 
-                    // Screen-8 -----------------------------
+                    // Screen-8 ------------------------------
                     {
                         "name": "Screen 8",
                         "key": "scr_8",
@@ -1553,7 +1553,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                         }
                     },
 
-                    // Screen-9 -----------------------------
+                    // Screen-9 ------------------------------
                     {
                         "name": "Screen 9",
                         "key": "scr_9",
@@ -1859,7 +1859,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                                     "w": `100vw`,
                                     "h": `100vh`,
                                     "e": mE,
-                                    "src": `${m_asset_path}/dashboard.svg`
+                                    "src": `${m_asset_path}/dashboard_2.svg`
                                 }, {
                                     "onLoad": (v = {}) => {
                                         mArtBox_evnt.add_animation({
@@ -1940,8 +1940,8 @@ let mGameRenderer = (data = {}, mDOM) => {
                         }
                     },
 
-                    
-                    // Screen - 12 ---------- Akash Dutta's code:--
+
+                    // Screen - 12 ---------- Akash Dutta's code starts:--
                     {
                         "name": "Screen 12",
                         "key": "scr_12",
@@ -1962,100 +1962,31 @@ let mGameRenderer = (data = {}, mDOM) => {
                             mScr.style.overflow = `hidden`;
 
                             let mSet = (mE = document.body) => {
-
                                 // Splash 1 - Rotate:--
                                 mArtBox_evnt.add_svg({
                                     "w": `100vw`,
                                     "h": `100vh`,
+                                    "x": 0,
+                                    "y": 0,
                                     "e": mE,
-                                    "src": `${m_asset_path}/Loading-Screen-bg.svg`
+                                    "src": `${m_asset_path}/audio1.svg`
                                 }, {
                                     "onLoad": (v = {}) => {
-                                        setTimeout(() => {
-                                            anime({
-                                                targets: v.e,
-                                                rotate: 100,
-                                                scale: 5,
-                                                easing: 'linear'
-                                            })
-                                        }, 100);
-
                                         mArtBox_evnt.add_svg({
-                                            "w": `30vw`,
-                                            "h": `30vw`,
-                                            "x": 35,
-                                            "y": 25,
+                                            "w": `4vw`,
+                                            "h": `3vh`,
+                                            "x": 48,
+                                            "y": 64,
                                             "e": mE,
-                                            "src": `${m_asset_path}/loader.svg`
+                                            "src": `${m_asset_path}/Play & Pause.svg`
                                         }, {
                                             "onLoad": (v = {}) => {
-                                                setTimeout(() => {
-                                                    anime({
-                                                        targets: v.e,
-                                                        rotate: 180,
-                                                        loop: true,
-                                                        // scale: 2.5,
-                                                        easing: 'linear'
-                                                    })
-                                                }, 100);
-
-                                                // setTimeout(() => {
-                                                //     let logoDiv = document.createElement('div');
-                                                //     logoDiv.style.width = '15vh';
-                                                //     logoDiv.style.height = '15vh';
-                                                //     logoDiv.style.backgroundColor = 'white';
-                                                //     logoDiv.style.borderRadius = '50px';
-                                                //     logoDiv.style.position = 'absolute';
-                                                //     logoDiv.style.top = '43%';
-                                                //     logoDiv.style.left = '46%';
-                                                //     logoDiv.style.zIndex = '10';
-                                                //     logoDiv.style.transform = "rotate(25deg)";
-
-                                                //     let logoText = document.createElement('h1');
-                                                //     logoText.innerText = "Logo"
-                                                //     logoText.style.color = '#000';
-                                                //     logoText.style.fontSize = '3vh';
-                                                //     logoText.style.fontWeight = '600';
-                                                //     logoText.style.position = 'absolute';
-                                                //     logoText.style.top = '40%';
-                                                //     logoText.style.left = '30%';
-                                                //     logoText.style.zIndex = '100';
-                                                    
-                                                //     logoDiv.appendChild(logoText);
-                                                //     let value = v.e;
-                                                //     value.appendChild(logoDiv);
-                                                // }, 3000);
+                                                v.e.style.cursor = 'pointer';
+                                            },
+                                            "onClick": (v = {}) => {
+                                                on_scr_end();
                                             }
                                         });
-
-                                        setTimeout(() => {
-                                            mArtBox_evnt.add_svg({
-                                                "w": `100vw`,
-                                                "h": `100vh`,
-                                                "x": 0,
-                                                "y": 0,
-                                                "e": mE,
-                                                "src": `${m_asset_path}/audio1.svg`
-                                            }, {
-                                                "onLoad": (v = {}) => {
-                                                    mArtBox_evnt.add_svg({
-                                                        "w": `4vw`,
-                                                        "h": `3vh`,
-                                                        "x": 48,
-                                                        "y": 64,
-                                                        "e": mE,
-                                                        "src": `${m_asset_path}/Play & Pause.svg`
-                                                    }, {
-                                                        "onLoad": (v = {}) => {
-                                                            v.e.style.cursor = 'pointer';
-                                                        },
-                                                        "onClick": (v = {}) => {
-                                                            on_scr_end();
-                                                        }
-                                                    });
-                                                }
-                                            });
-                                        }, 3500);
                                     }
                                 });
 
@@ -2068,7 +1999,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                         }
                     },
 
-                    //Screen 13 -------------------
+                    //Screen 13 -----------------------
                     {
                         "name": "Screen 13",
                         "key": "scr_13",
@@ -2098,10 +2029,11 @@ let mGameRenderer = (data = {}, mDOM) => {
                                     "src": `${m_asset_path}/audio2.svg`
                                 });
                                 setTimeout(() => {
-                                        mArtBox_evnt.add_svg({
-                                         on_scr_end
-                                        }
-                                    );
+                                    // mArtBox_evnt.add_svg({
+                                    //     on_scr_end
+                                    // }
+                                    // );
+                                    on_scr_end();
                                 }, 3500);
 
                                 let on_scr_end = () => {
@@ -2134,6 +2066,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                             mScr.style.overflow = `hidden`;
 
                             let mSet = (mE = document.body) => {
+                                console.log("its working");
 
                                 // Splash 1 - Rotate:--
                                 mArtBox_evnt.add_svg({
@@ -2183,7 +2116,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                         }
                     },
 
-                    // Screen - 15 -----------------------------
+                    // Screen - 15 --------------------
                     {
                         "name": "Screen 15",
                         "key": "scr_15",
@@ -2253,7 +2186,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                         }
                     },
 
-                    // Screen-16 -----------------------------
+                    // Screen-16 -----------------------
                     {
                         "name": "Screen 16",
                         "key": "scr_16",
@@ -2358,7 +2291,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                     //callback..
                     "cb": {
                         "on_scr_end": (p = {}) => {
-                            
+
                         },
                     }
                 }
@@ -2394,7 +2327,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                 }
             });
         };
-        
+
         let scr_13 = () => {
             mDta_main.screens.set(`scr_13`, {
                 "e": mE,
@@ -2425,20 +2358,21 @@ let mGameRenderer = (data = {}, mDOM) => {
             });
         };
 
-        // let scr_11 = () => {
-        //     mDta_main.screens.set(`scr_11`, {
-        //         "e": mE,
-        //         "value": {
-        //             //here you can assign your variable based on your requirements..
-        //             //callback..
-        //             "cb": {
-        //                 "on_scr_end": (p = {}) => {
-        //                     scr_12()
-        //                 },
-        //             }
-        //         }
-        //     });
-        // };
+        let scr_11 = () => {
+            mDta_main.screens.set(`scr_11`, {
+                "e": mE,
+                "value": {
+                    //here you can assign your variable based on your requirements..
+                    //callback..
+                    "cb": {
+                        "on_scr_end": (p = {}) => {
+                            scr_12()
+                        },
+                    }
+                }
+            });
+        };
+
         let scr_10 = () => {
             mDta_main.screens.set(`scr_10`, {
                 "e": mE,
@@ -2623,7 +2557,7 @@ let mGameRenderer = (data = {}, mDOM) => {
             });
         };
 
-        mDta_main.screens.set(`scr_11`, {
+        mDta_main.screens.set(`scr_1`, {
             "e": mE, //Html-Element
             "value": {
                 //here you can assign your variable based on your requirements..
@@ -2631,7 +2565,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                 //callback..
                 "cb": {
                     "on_scr_end": (p = {}) => {
-                        scr_12();
+                        scr_2();
                     },
                 }
 
