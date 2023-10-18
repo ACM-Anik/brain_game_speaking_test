@@ -1192,7 +1192,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                                                     v.e.style.cursor = 'pointer';
                                                 },
                                                 "onClick": (v = {}) => {
-                                                    on_scr_end();
+                                                    dashboard();
                                                 }
                                             });
                                         }
@@ -1212,13 +1212,46 @@ let mGameRenderer = (data = {}, mDOM) => {
                                                 "e": v.e,
                                                 "type": "animate__bounceIn"
                                             });
-                                        },
-                                        "onClick": (v = {}) => {
-                                            on_scr_end();
                                         }
-                                    });
+                                    });//------
 
                                 }
+
+                                // Dashboard:--
+                                let dashboard = () => {
+                                    mArtBox_evnt.add_svg({
+                                        "w": `100vw`,
+                                        "h": `100vh`,
+                                        "x": 0,
+                                        "y": 0,
+                                        "e": mE,
+                                        "src": `${m_asset_path}/dashboard.svg`
+                                    }, {
+                                        "onLoad": (v = {}) => {
+                                            mArtBox_evnt.add_animation({
+                                                "e": v.e,
+                                                "type": "animate__fadeIn"
+                                            });//----
+
+                                            mArtBox_evnt.add_svg({ // Next btn
+                                                "w": `7vw`,
+                                                "h": `4.5vh`,
+                                                "x": 88,
+                                                "y": 88,
+                                                "e": mE,
+                                                "src": `${m_asset_path}/next_btn.svg`
+                                            }, {
+                                                "onLoad": (v = {}) => {
+                                                    v.e.style.cursor = 'pointer';
+                                                },
+                                                "onClick": (v = {}) => {
+                                                    on_scr_end();
+                                                }
+                                            });//-----
+                                        }
+                                    });
+                                };//------
+
 
                                 // on_scr_end..
                                 let on_scr_end = () => {
