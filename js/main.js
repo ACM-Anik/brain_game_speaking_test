@@ -1036,7 +1036,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                                     "y": 20,
                                     "e": mE,
                                     "src": `${m_asset_path}/replied_text_about_rose.svg`
-                                });
+                                });//-------
 
                                 // Missing Words:--
                                 mArtBox_evnt.add_svg({//Missing words - text
@@ -1100,7 +1100,6 @@ let mGameRenderer = (data = {}, mDOM) => {
                                         });
                                     }
                                 });
-
                                 //------------|
 
                                 // on_scr_end..
@@ -1142,7 +1141,115 @@ let mGameRenderer = (data = {}, mDOM) => {
 
                             //set..
                             let mSet = (mE = document.body) => {
-                                
+                                // BG & Next btn:--
+                                mArtBox_evnt.add_svg({
+                                    "w": `100vw`,
+                                    "h": `100vh`,
+                                    "e": mE,
+                                    "src": `${m_asset_path}/skills_progress.svg`
+                                }, {
+                                    "onLoad": (v = {}) => {
+                                        mArtBox_evnt.add_svg({ // Next btn
+                                            "w": `7vw`,
+                                            "h": `5vh`,
+                                            "x": 80,
+                                            "y": 82,
+                                            "e": mE,
+                                            "src": `${m_asset_path}/next_btn.svg`
+                                        }, {
+                                            "onLoad": (v = {}) => {
+                                                v.e.style.cursor = 'pointer';
+                                            },
+                                            "onClick": (v = {}) => {
+                                                congrats();
+                                            }
+                                        });
+                                    }
+                                });//------
+
+                                let congrats = () => {
+                                    // BG & Next Btn:--
+                                    mArtBox_evnt.add_svg({
+                                        "w": `100vw`,
+                                        "h": `100vh`,
+                                        "x": 0,
+                                        "y": 0,
+                                        "e": mE,
+                                        "src": `${m_asset_path}/bg_blue_white.svg`
+                                    }, {
+                                        "onLoad": (v = {}) => {
+                                            mArtBox_evnt.add_svg({ // Next btn
+                                                "w": `7vw`,
+                                                "h": `5vh`,
+                                                "x": 80,
+                                                "y": 82,
+                                                "e": mE,
+                                                "src": `${m_asset_path}/next_btn.svg`
+                                            }, {
+                                                "onLoad": (v = {}) => {
+                                                    v.e.style.cursor = 'pointer';
+                                                },
+                                                "onClick": (v = {}) => {
+                                                    dashboard();
+                                                }
+                                            });
+                                        }
+                                    });//--------
+
+                                    // Congratulations:--
+                                    mArtBox_evnt.add_svg({
+                                        "w": `55vw`,
+                                        "h": `65vh`,
+                                        "x": 23,
+                                        "y": 20,
+                                        "e": mE,
+                                        "src": `${m_asset_path}/congratulations.svg`
+                                    }, {
+                                        "onLoad": (v = {}) => {
+                                            mArtBox_evnt.add_animation({
+                                                "e": v.e,
+                                                "type": "animate__bounceIn"
+                                            });
+                                        }
+                                    });//------
+
+                                }//------
+
+                                // Dashboard:--
+                                let dashboard = () => {
+                                    mArtBox_evnt.add_svg({
+                                        "w": `100vw`,
+                                        "h": `100vh`,
+                                        "x": 0,
+                                        "y": 0,
+                                        "e": mE,
+                                        "src": `${m_asset_path}/dashboard.svg`
+                                    }, {
+                                        "onLoad": (v = {}) => {
+                                            mArtBox_evnt.add_animation({
+                                                "e": v.e,
+                                                "type": "animate__fadeIn"
+                                            });//----
+
+                                            mArtBox_evnt.add_svg({ // Next btn
+                                                "w": `7vw`,
+                                                "h": `4.5vh`,
+                                                "x": 88,
+                                                "y": 88,
+                                                "e": mE,
+                                                "src": `${m_asset_path}/next_btn.svg`
+                                            }, {
+                                                "onLoad": (v = {}) => {
+                                                    v.e.style.cursor = 'pointer';
+                                                },
+                                                "onClick": (v = {}) => {
+                                                    on_scr_end();
+                                                }
+                                            });//-----
+                                        }
+                                    });
+                                };//------
+
 
                                 // on_scr_end..
                                 let on_scr_end = () => {
@@ -1362,7 +1469,7 @@ let mGameRenderer = (data = {}, mDOM) => {
             });
         };
 
-        mDta_main.screens.set(`scr_5`, {
+        mDta_main.screens.set(`scr_6`, {
             "e": mE, //Html-Element
             "value": {
                 //here you can assign your variable based on your requirements..
@@ -1370,7 +1477,7 @@ let mGameRenderer = (data = {}, mDOM) => {
                 //callback..
                 "cb": {
                     "on_scr_end": (p = {}) => {
-                        scr_6();
+                        scr_7();
                     },
                 }
 
